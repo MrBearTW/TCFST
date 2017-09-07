@@ -2,6 +2,8 @@ import java.util.*;
 public class HW1{
     public static void main(String args[]){
 
+        c_label:   
+
         Scanner scan = new Scanner(System.in);
         System.out.println("GUESS?");
         int y  = scan.nextInt();
@@ -28,14 +30,18 @@ for (int i=0;i<10;i++) {
     }
 */
 
-        
+    for (int z=1;x!=y;z++) {    
+
+
 
     if (x!=y){
-            System.out.println("Wrong "+"this is your "+" Time Guess");
-            System.out.println("Answer: "+x);
-        }else{
-            System.out.println("Good Job "+"this is your "+" Time Guess");
-            System.out.println("Answer: "+x);
-        }    
+                System.out.println("Wrong "+"this is your "+z+" Time Guess");
+                //System.out.println("Answer: "+x);
+                continue c_label;
+            }else{
+                System.out.println("Good Job "+"this is your "+z+" Time Guess");
+                System.out.println("Answer: "+x);
+                }
+    }
     }
 }
