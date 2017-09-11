@@ -3,9 +3,9 @@ public class TestBC {
         //b_label:{
         
         int y = 0;
-        c_label:
         y=0;
-            for ( ;y<5;y++) {  
+        c_label:
+             for ( ;y<5;y++) {  
                 //c_label:                        
                     for (int i=0;i<10;i++) {
                         if(i==7){

@@ -11,10 +11,10 @@ public class TestBC_Teacher{
 						//break;
 						continue c_label;
 						//break b_label;
-					}
-					System.out.print(i);
+						}
+					System.out.println("i="+i+" "+"j="+j+" ");
 				}
-				System.out.println();
+				System.out.println("j="+j+" ");
 			}
 		}
 	}

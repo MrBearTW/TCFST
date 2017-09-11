@@ -1,6 +1,6 @@
 public class TestArray1{
         public static void main (String args[]) {
-/* Ex1
+/* Ex1      //Second [] should have number   
             int[] scores = new int[5];
             scores[0]=97;
             scores[1]=87;
@@ -18,6 +18,14 @@ public class TestArray1{
                 System.out.println(scores2[i]);
             }
 */
+/* Ex3      //Second [] should not have number
+            int [] scores3 =new int [] {95,96,95,94,93,92,87,94,87,94,0};
+            for (int i=0;i<scores2.length;i++) {
+                System.out.println(scores2[i]);
+            }
+            //Second [] should not have number
+*/
+
                 int[] lottos =new int[6];
                 b_label:{            
                 //int[] lottos =new int[6];
