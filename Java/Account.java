@@ -1,14 +1,15 @@
-public class Account{
-    //NO main ,NO go
+public class Account{    //NO main ,Can not be executed
+
     //field
     private String accountNumber;
     private int balance;
+    static int serialNumber=912;
 
     //constructor
     Account(String an,int b){
         this.accountNumber = an;
         this.balance = b;
-        
+        this.serialNumber++;
     }
 
     //method
@@ -24,4 +25,11 @@ public class Account{
     String getAccountNumber(){
         return accountNumber;
     }
+
+    int getSerialNumber(){
+        return serialNumber;
+    }
+
+
+
 }
