@@ -29,7 +29,4 @@ public class Account{    //NO main ,Can not be executed
     int getSerialNumber(){
         return serialNumber;
     }
-
-
-
 }
