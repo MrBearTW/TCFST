@@ -41,29 +41,29 @@ print(dicts)
 tuples=(55,66,94,87,89)
 print(tuples)
 a,b,c,d,e=tuples
-print(a)
-print(e)
+print('a'=,a)
+print('e'=,e)
 
 x=55
 y=66
 x,y=y,x
-print(x)
+print('x',=x)
 '''
-JAVA
+JAVA 需要多一個變數才能做交換
 x=55
 y=66
-x=z   //此時=55 =66z=55
-x=y
-y=z
+x=z   此時x=55 y=66 z=55
+x=y   此時x=66 y=66 z=55
+y=z   此時x=66 y=55 z=55
 '''
 
 
 a,*b=[55,66,9,4]
-print(a)
-print(b)
+print('a',=a)
+print('b',=b)
 # print(c)
 
 d,*e,f=[55,66,9,4,8,7,9,4,1,1000]
-print(d)
-print(e)
-print(f)
+print('d=',d)
+print('e',=e)
+print('f',=f)
