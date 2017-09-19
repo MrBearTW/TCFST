@@ -1,5 +1,5 @@
 
-## list 清單  =  就是陣列
+## list 清單  =  就是陣列  有順序
 lists = [9,4,8,7,9,4,8,9]
 print(lists)
 print(lists[0])
@@ -9,8 +9,9 @@ lists.append(7)
 print(lists)
 print(lists[7])
 
-## lists.remove(9)   ## 砍數值9，從前面開始找，不太精確的用法
-del lists[2]      ## 砍位置
+lists.remove(9)   ## 砍數值9，從前面開始找，不太精確的用法
+print(lists)
+del lists[2]   ## 砍位置
 print(lists)
 
 '''
@@ -31,23 +32,26 @@ print(sets)
 
 ## dict 字典
 dicts = {'A':5566,'B':9487}
-print(dicts)
+print('原本=',dicts)
 dicts['C']=1000
-print(dicts)
+print('加C=',dicts)
 del dicts['B']
-print(dicts)
+print('去掉B=',dicts)
 
 ## Tuple
 tuples=(55,66,94,87,89)
-print(tuples)
+print('tuples=',tuples)
 a,b,c,d,e=tuples
 print('a=',a)
 print('e=',e)
 
+
+##python專屬用法
 x=55
 y=66
 x,y=y,x
 print('x=',x)
+
 '''
 JAVA 需要多一個變數才能做交換
 x=55
