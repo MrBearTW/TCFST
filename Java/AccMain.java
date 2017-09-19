@@ -7,14 +7,20 @@ public class AccMain {
 
         acc.withdraw(17);
         acc.deposit(77);
-        acc.serialNumber();
+ //       acc.serialNumber();
 
         System.out.println(acc.getAccountNumber());
         System.out.println(acc.getBalance());
-        System.out.println(acc.getSerialNumber());    
+//        System.out.println(acc.getSerialNumber());
+
+
+        acc2.withdraw(5566);
+        acc2.deposit(2017);
+        //acc2.serialNumber();
         
         System.out.println(acc2.getAccountNumber());
         System.out.println(acc2.getBalance());
-        System.out.println(acc2.getSerialNumber());
+//        System.out.println(acc2.getSerialNumber());
+
     }   
 }

@@ -3,13 +3,14 @@ public class Account{    //NO main ,Can not be executed
     //field
     private String accountNumber;
     private int balance;
-    static int serialNumber=912;
+//    static int serialNumber=912;
 
     //constructor
-    Account(String an,int b){
-        this.accountNumber = an;
+    Account(String an,int b/*,int sn*/){
+        this.accountNumber = an;    
         this.balance = b;
-        this.serialNumber++;
+//        this.serialNumber = sn;
+//        sn++;
     }
 
     //method
@@ -26,7 +27,7 @@ public class Account{    //NO main ,Can not be executed
         return accountNumber;
     }
 
-    int getSerialNumber(){
-        return serialNumber;
-    }
+//    int getSerialNumber(){
+//        return serialNumber;
+//    }
 }
