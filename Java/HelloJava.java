@@ -1,10 +1,10 @@
-//class¬OÃþ§O
+//classï¿½Oï¿½ï¿½ï¿½O
 public class HelloJava {
-//main¬O¤èªk
+//mainï¿½Oï¿½ï¿½k
 	public static void main(String args[] ){
-	//³o²Õ{}¤ºªº¬O«ü¥O
+	//ï¿½oï¿½ï¿½{}ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½O
 		int		 i          =           5566 ;
-//		«¬ºA	  ÅÜ¼Æ  µ¹­È(«á­±µ¹«e­±)     ­È
+//		ï¿½ï¿½ï¿½A	  ï¿½Ü¼ï¿½  ï¿½ï¿½ï¿½ï¿½(ï¿½á­±ï¿½ï¿½ï¿½eï¿½ï¿½)     ï¿½ï¿½
         int		 k          =           2017 ;
 		System.out.println("Hello Java");
 		System.out.println(i);
@@ -14,4 +14,3 @@ public class HelloJava {
 		System.out.println(k);
 	}
 }
-
