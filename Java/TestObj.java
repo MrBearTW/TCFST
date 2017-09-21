@@ -10,8 +10,6 @@ public class TestObj{
         System.out.println(i.toString());
         System.out.println(s.toString());
 
-
-
     }
 
     public String toString(){

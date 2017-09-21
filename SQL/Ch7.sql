@@ -1,4 +1,5 @@
 use company;
+use id2909570_tcfst;
 select * from 員工資料表 where 員工編號=8;
 
 select 員工編號 ,姓名, 薪水

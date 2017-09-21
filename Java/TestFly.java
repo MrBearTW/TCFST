@@ -7,7 +7,7 @@ public class TestFly{
     }
 }
 class airPlane implements Fly{
-    public void fly(){
+    public void fly(){       // muist be public
         System.out.println("airPlane Fly");
     }
     public void land(){

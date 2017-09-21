@@ -1,7 +1,8 @@
 delimiter //
-use company;//
+use id2909570_tcfst;//
+--use company;//
 CREATE FUNCTION mydate()
-RETURNs varchar(72)
+RETURNS varchar(72)
 begin
 DECLARE week,day,minute char(24);
 set week = dayname(curdate());
@@ -10,10 +11,6 @@ SET minute = date_format(curdate(),'%Y/%m/%d');
 RETURN concat(week,"",day,"",minute);
 end//
 delimiter ;
-
-
-
-
 
 
 

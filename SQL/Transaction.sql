@@ -1,3 +1,5 @@
+---一步一步輸入
+
 CREATE DATABASE CRM;
 
 use CRM;
@@ -20,5 +22,5 @@ ROLLBACK;
 
 select * FROM customer;
 
-
+-- 檢查 autocommit狀態
 show session variables where variable_name = 'autocommit';
