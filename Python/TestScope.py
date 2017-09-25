@@ -7,3 +7,5 @@ def fun():
 
 fun()
 print(x)
+
+#fun內的函式變數x和模組變數x存在的範圍不同

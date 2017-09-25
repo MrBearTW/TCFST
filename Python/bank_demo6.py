@@ -10,7 +10,7 @@ print(acc)
 #acc.__balance = 0;
 #acc.__name = 'DEF'
 
-acc.balance = -10
+#acc.balance = -10
 print('戶名：', acc.name)
 print('帳號：', acc.number)
 print('餘額：', acc.balance)
