@@ -1,10 +1,14 @@
-nums = [9,4,8,7,5,6,1]
+nums = [9,4,8,7,5,6,1]  #List      append
+nums1 = {9,4,8,7}       #Set       add
+nums2 = (9,4,8,7)       #Tuple     產生之後就固定
 
 for i in range(len(nums)):
     print(nums[i],end=' ')
     # i  0->5 
 
-print(nums[i],end=' ')
+print()
+
+
 for i in range(0,2,1):        #第0到第1格  0<= 變數 <2
     print(nums[i],end=' ')
 

@@ -4,7 +4,7 @@ def gcd(m,n):
     else:
         return gcd(n,m%n)
 
-print('輸入數字球最大公因數：')
+print('輸入數字求最大公因數：')
 
 m=int(input('M='))
 n=int(input('N='))
