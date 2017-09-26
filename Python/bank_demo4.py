@@ -15,5 +15,3 @@ print('戶名：', acc.name)
 print('帳號：', acc.number)
 print('餘額：', acc.balance)
 #print(acc.test)
-
-#  http://192.168.3.156:8080

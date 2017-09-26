@@ -12,4 +12,4 @@ print('帳號：', acc.number)
 print('餘額：', acc.balance)
 #print(acc.test)
 
-#  http://192.168.3.156:8080
+# bank2改用建構子寫法
