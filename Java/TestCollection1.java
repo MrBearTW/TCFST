@@ -15,7 +15,7 @@ public class TestCollection1 {
         
         //System.out.println(s);
 
-        s.addFirst(9487);
+        s.addFirst(9487);   //only use in LinkedList
 
         for(Object o : s){    //use "object" to combine "int double string boolean" 
             System.out.println(o);

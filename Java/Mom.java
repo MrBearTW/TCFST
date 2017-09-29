@@ -1,4 +1,3 @@
-// http://192.168.168.209:8080/
 public class Mom extends Thread{
     public static void main(String args[]){
         Mom m = new Mom();
@@ -14,7 +13,7 @@ public class Mom extends Thread{
         Son s = new Son();
         s.start();
         //s.join();
-        //try{s.join();}catch(Exception e){}
+        //try{s.join();}catch(InterruptedException e){}
         s.join();
         System.out.println("����R�X��...");
         try{Thread.sleep(500);}catch(Exception e){}

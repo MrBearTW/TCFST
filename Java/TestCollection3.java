@@ -10,8 +10,7 @@ public class TestCollection3 {
         s.add("Mark Strong");
         s.add("Colin Firth");
 
-        s.add(9);
-        
+        //s.add(9);        // only accept String
 
         for(String o : s){ 
             System.out.println(o.toUpperCase());
