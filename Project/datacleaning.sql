@@ -51,3 +51,13 @@ SELECT *
 FROM santander.train_ver2
 where age > 120
 order by age;
+
+---NA處理
+--mysql
+select *
+FROM santander.train_ver2
+where ncodpers = 1050741 ;
+--sqlserver
+select *
+FROM [Santander].[dbo].[train_ver22]
+where ["ncodpers"] = 1050741 ;

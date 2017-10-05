@@ -1,0 +1,140 @@
+- 正在複製到 [dbo].[train_ver22] (錯誤)
+訊息
+錯誤 0xc0202009: 資料流程工作 1: SSIS 錯誤碼 DTS_E_OLEDBERROR。發生 OLE DB 錯誤。錯誤碼: 0x80004005。
+有 OLE DB 記錄可用。來源: "Microsoft SQL Native Client"  Hresult: 0x80004005  描述: "檔案群組 'PRIMARY' 中的磁碟空間不足，無法為資料庫 'Santander' 配置新的頁面。請卸除檔案群組中的物件、將其他檔案加入檔案群組，或將檔案群組中現有檔案設定為自動成長，以產生必要的空間。"。
+ (SQL Server 匯入和匯出精靈)
+ 
+錯誤 0xc0209029: 資料流程工作 1: SSIS 錯誤碼 DTS_E_INDUCEDTRANSFORMFAILUREONERROR。因為發生錯誤碼 0xC020907B，且 "目的地 - train_ver22.輸入[Destination Input]" 的錯誤資料列配置指定在錯誤時失敗，所以 "目的地 - train_ver22.輸入[Destination Input]" 失敗。在指定的元件上，指定的物件發生錯誤。在此之前可能已公佈過錯誤訊息，說明有關此失敗的詳細資訊。
+ (SQL Server 匯入和匯出精靈)
+ 
+錯誤 0xc0047022: 資料流程工作 1: SSIS 錯誤碼 DTS_E_PROCESSINPUTFAILED。元件 "目的地 - train_ver22" (202) 上的 ProcessInput 方法於處理輸入 "Destination Input" (215) 時失敗，錯誤碼為 0xC0209029。識別的元件從 ProcessInput 方法傳回錯誤。此錯誤是元件特定的錯誤，但屬於嚴重錯誤，將導致資料流程工作停止執行。在此之前可能已公佈過錯誤訊息，說明有關此失敗的詳細資訊。
+ (SQL Server 匯入和匯出精靈)
+ 
+錯誤 0xc02020c4: 資料流程工作 1: 嘗試將資料列加入資料流程工作緩衝區失敗，錯誤碼為 0xC0047020。
+ (SQL Server 匯入和匯出精靈)
+ 
+錯誤 0xc0047038: 資料流程工作 1: SSIS 錯誤碼 DTS_E_PRIMEOUTPUTFAILED。在 來源 - train_ver22_csv 上的 PrimeOutput 方法傳回錯誤碼 0xC02020C4。當管線引擎呼叫 PrimeOutput() 時，元件傳回失敗碼。在此之前可能已公佈過錯誤訊息，說明有關此失敗的詳細資訊。
+ (SQL Server 匯入和匯出精靈)
+ 
+
+
+
+
+
+13:16:21	LOAD DATA LOCAL INFILE 'C:/Users/tcfst/Desktop/Santander/Santander/train_ver2.csv/train_ver2.csv' INTO TABLE train_ver2_1_2 FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES	
+
+13647309 row(s) affected, 64 warning(s): 1265 Data truncated for column 'renta' at row 5 1265 Data truncated for column 'renta' at row 9 1265 Data truncated for column 'renta' at row 12 1265 Data truncated for column 'renta' at row 15 1265 Data truncated for column 'renta' at row 16 1265 Data truncated for column 'renta' at row 20 1265 Data truncated for column 'renta' at row 23 1265 Data truncated for column 'renta' at row 26 1265 Data truncated for column 'renta' at row 29 1265 Data truncated for column 'renta' at row 38 1265 Data truncated for column 'renta' at row 49 1265 Data truncated for column 'renta' at row 66 1265 Data truncated for column 'renta' at row 73 1265 Data truncated for column 'renta' at row 75 1265 Data truncated for column 'renta' at row 86 1265 Data truncated for column 'renta' at row 96 1265 Data truncated for column 'renta' at row 100 1265 Data truncated for column 'renta' at row 103 1265 Data truncated for column 'renta' at row 108 1265 Data truncated for column 'renta' at row 112 1265 Data truncated for column 'renta' at row 116 1265 Data truncated for column 'renta' at row 127 1265 Data truncated for column 'renta' at row 136 1265 Data truncated for column 'renta' at row 138 1265 Data truncated for column 'renta' at row 139 1265 Data truncated for column 'renta' at row 140 1265 Data truncated for column 'renta' at row 143 1265 Data truncated for column 'renta' at row 147 1265 Data truncated for column 'renta' at row 154 1265 Data truncated for column 'renta' at row 156 1265 Data truncated for column 'renta' at row 160 1265 Data truncated for column 'renta' at row 161 1265 Data truncated for column 'renta' at row 164 1265 Data truncated for column 'renta' at row 176 1265 Data truncated for column 'renta' at row 184 1265 Data truncated for column 'renta' at row 194 1265 Data truncated for column 'renta' at row 197 1265 Data truncated for column 'renta' at row 202 1265 Data truncated for column 'renta' at row 206 1265 Data truncated for column 'renta' at row 209 1265 Data truncated for column 'renta' at row 210 1265 Data truncated for column 'renta' at row 217 1265 Data truncated for column 'renta' at row 218 1265 Data truncated for column 'renta' at row 224 1265 Data truncated for column 'renta' at row 228 1265 Data truncated for column 'renta' at row 236 1265 Data truncated for column 'renta' at row 245 1265 Data truncated for column 'renta' at row 246 1265 Data truncated for column 'renta' at row 254 1265 Data truncated for column 'renta' at row 258 1265 Data truncated for column 'renta' at row 260 1366 Incorrect integer value: ' NA' for column 'age' at row 262 1366 Incorrect integer value: 'NA' for column 'ind_nuevo' at row 262 1366 Incorrect integer value: ' NA' for column 'antiguedad' at row 262 1366 Incorrect integer value: 'NA' for column 'indrel' at row 262 1265 Data truncated for column 'indrel_1mes' at row 262 1366 Incorrect integer value: 'NA' for column 'tipodom' at row 262 1366 Incorrect integer value: 'NA' for column 'cod_prov' at row 262 1366 Incorrect integer value: 'NA' for column 'ind_actividad_cliente' at row 262 1265 Data truncated for column 'renta' at row 262 1265 Data truncated for column 'renta' at row 273 1265 Data truncated for column 'renta' at row 277 1265 Data truncated for column 'renta' at row 288 1265 Data truncated for column 'renta' at row 303 Records: 13647309 Deleted: 0 Skipped: 0 Warnings: 3237152	957.862 sec
+
+
+
+13647309 row(s) affected, 64 warning(s): 
+1265 Data truncated for column 'renta' at row 5 
+1265 Data truncated for column 'renta' at row 9 
+1265 Data truncated for column 'renta' at row 12 
+1265 Data truncated for column 'renta' at row 15 
+1265 Data truncated for column 'renta' at row 16 
+1265 Data truncated for column 'renta' at row 20 
+1265 Data truncated for column 'renta' at row 23 
+1265 Data truncated for column 'renta' at row 26 
+1265 Data truncated for column 'renta' at row 29 
+1265 Data truncated for column 'renta' at row 38 
+1265 Data truncated for column 'renta' at row 49 
+1265 Data truncated for column 'renta' at row 66 
+1265 Data truncated for column 'renta' at row 73 
+1265 Data truncated for column 'renta' at row 75 
+1265 Data truncated for column 'renta' at row 86 
+1265 Data truncated for column 'renta' at row 96 
+1265 Data truncated for column 'renta' at row 100 
+1265 Data truncated for column 'renta' at row 103 
+1265 Data truncated for column 'renta' at row 108 
+1265 Data truncated for column 'renta' at row 112 
+1265 Data truncated for column 'renta' at row 116 
+1265 Data truncated for column 'renta' at row 127 
+1265 Data truncated for column 'renta' at row 136 
+1265 Data truncated for column 'renta' at row 138 
+1265 Data truncated for column 'renta' at row 139 
+1265 Data truncated for column 'renta' at row 140 
+1265 Data truncated for column 'renta' at row 143 
+1265 Data truncated for column 'renta' at row 147 
+1265 Data truncated for column 'renta' at row 154 
+1265 Data truncated for column 'renta' at row 156 
+1265 Data truncated for column 'renta' at row 160 
+1265 Data truncated for column 'renta' at row 161 
+1265 Data truncated for column 'renta' at row 164 
+1265 Data truncated for column 'renta' at row 176 
+1265 Data truncated for column 'renta' at row 184 
+1265 Data truncated for column 'renta' at row 194 
+1265 Data truncated for column 'renta' at row 197 
+1265 Data truncated for column 'renta' at row 202 
+1265 Data truncated for column 'renta' at row 206 
+1265 Data truncated for column 'renta' at row 209 
+1265 Data truncated for column 'renta' at row 210 
+1265 Data truncated for column 'renta' at row 217 
+1265 Data truncated for column 'renta' at row 218 
+1265 Data truncated for column 'renta' at row 224 
+1265 Data truncated for column 'renta' at row 228 
+1265 Data truncated for column 'renta' at row 236 
+1265 Data truncated for column 'renta' at row 245 
+1265 Data truncated for column 'renta' at row 246 
+1265 Data truncated for column 'renta' at row 254 
+1265 Data truncated for column 'renta' at row 258 
+1265 Data truncated for column 'renta' at row 260 
+1366 Incorrect integer value: ' NA' for column 'age' at row 262 
+1366 Incorrect integer value: 'NA' for column 'ind_nuevo' at row 262 
+1366 Incorrect integer value: '     NA' for column 'antiguedad' at row 262 
+1366 Incorrect integer value: 'NA' for column 'indrel' at row 262 
+1265 Data truncated for column 'indrel_1mes' at row 262 
+1366 Incorrect integer value: 'NA' for column 'tipodom' at row 262 
+1366 Incorrect integer value: 'NA' for column 'cod_prov' at row 262 
+1366 Incorrect integer value: 'NA' for column 'ind_actividad_cliente' at row 262 
+1265 Data truncated for column 'renta' at row 262 
+1265 Data truncated for column 'renta' at row 273 
+1265 Data truncated for column 'renta' at row 277 
+1265 Data truncated for column 'renta' at row 288 
+1265 Data truncated for column 'renta' at row 303 
+Records: 13647309  Deleted: 0  Skipped: 0  Warnings: 3237152
+
+
+
+
+13647309 row(s) affected, 64 warning(s): 1265 Data truncated for column 'renta' at row 5 1265 Data truncated for column 'renta' at row 9 1265 Data truncated for column 'renta' at row 12 1265 Data truncated for column 'renta' at row 15 1265 Data truncated for column 'renta' at row 16 1265 Data truncated for column 'renta' at row 20 1265 Data truncated for column 'renta' at row 23 1265 Data truncated for column 'renta' at row 26 1265 Data truncated for column 'renta' at row 29 1265 Data truncated for column 'renta' at row 38 1265 Data truncated for column 'renta' at row 49 1265 Data truncated for column 'renta' at row 66 1265 Data truncated for column 'renta' at row 73 1265 Data truncated for column 'renta' at row 75 1265 Data truncated for column 'renta' at row 86 1265 Data truncated for column 'renta' at row 96 1265 Data truncated for column 'renta' at row 100 1265 Data truncated for column 'renta' at row 103 1265 Data truncated for column 'renta' at row 108 1265 Data truncated for column 'renta' at row 112 1265 Data truncated for column 'renta' at row 116 1265 Data truncated for column 'renta' at row 127 1265 Data truncated for column 'renta' at row 136 1265 Data truncated for column 'renta' at row 138 1265 Data truncated for column 'renta' at row 139 1265 Data truncated for column 'renta' at row 140 1265 Data truncated for column 'renta' at row 143 1265 Data truncated for column 'renta' at row 147 1265 Data truncated for column 'renta' at row 154 1265 Data truncated for column 'renta' at row 156 1265 Data truncated for column 'renta' at row 160 1265 Data truncated for column 'renta' at row 161 1265 Data truncated for column 'renta' at row 164 1265 Data truncated for column 'renta' at row 176 1265 Data truncated for column 'renta' at row 184 1265 Data truncated for column 'renta' at row 194 1265 Data truncated for column 'renta' at row 197 1265 Data truncated for column 'renta' at row 202 1265 Data truncated for column 'renta' at row 206 1265 Data truncated for column 'renta' at row 209 1265 Data truncated for column 'renta' at row 210 1265 Data truncated for column 'renta' at row 217 1265 Data truncated for column 'renta' at row 218 1265 Data truncated for column 'renta' at row 224 1265 Data truncated for column 'renta' at row 228 1265 Data truncated for column 'renta' at row 236 1265 Data truncated for column 'renta' at row 245 1265 Data truncated for column 'renta' at row 246 1265 Data truncated for column 'renta' at row 254 1265 Data truncated for column 'renta' at row 258 1265 Data truncated for column 'renta' at row 260 1366 Incorrect integer value: ' NA' for column 'age' at row 262 1366 Incorrect integer value: 'NA' for column 'ind_nuevo' at row 262 1366 Incorrect integer value: '     NA' for column 'antiguedad' at row 262 1366 Incorrect integer value: 'NA' for column 'indrel' at row 262 1265 Data truncated for column 'indrel_1mes' at row 262 1366 Incorrect integer value: 'NA' for column 'tipodom' at row 262 1366 Incorrect integer value: 'NA' for column 'cod_prov' at row 262 1366 Incorrect integer value: 'NA' for column 'ind_actividad_cliente' at row 262 1265 Data truncated for column 'renta' at row 262 1265 Data truncated for column 'renta' at row 273 1265 Data truncated for column 'renta' at row 277 1265 Data truncated for column 'renta' at row 288 1265 Data truncated for column 'renta' at row 303 Records: 13647309  Deleted: 0  Skipped: 0  Warnings: 3237152
+
+
+
+
+
+
+
+------------+
+|                         17 |                   956645 |
+6 |                             119 |                    3 |
+121 |                      
+6757 |                        
+2 |
+258 |                     
+3 |                         
+224 |
+5 |                          
+6 |                       
+3 |
+3 |                       
+3 |                           
+163                     
+3 |                      
+2 |                       
+53 |                      
+53 |                                     
+2 |
+520995 |                        
+4 |                                 2 |
+                          2 |                                2 |
+                 2 |                                2 |
+        2 |                                 2 |
+2 |                                 2 |                                 2 |
+                            2 |                                 2 |
+                    2 |                                 2 |
+           2 |                                 2 |
+   2 |                                 2 |                                 2 |
+                               2 |                                2 |
+                    2 |                                 2 |
+          2 |
