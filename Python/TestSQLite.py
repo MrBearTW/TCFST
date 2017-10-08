@@ -1,6 +1,6 @@
 import sqlite3
 conn = sqlite3.connect('ddb.sqllite3')
-c =conn.cursor()
+c = conn.cursor()
 
 #c.execute('''create table MSG(ID Integer,Name Test,MSG Text)''')   #建立
 #c.execute('''insert into MSG values(1,'APPLE','OH YA')''')         #新增資料
