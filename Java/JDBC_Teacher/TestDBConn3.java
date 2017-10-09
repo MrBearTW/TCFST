@@ -13,24 +13,24 @@ public class TestDBConn2{
         Connection conn = db.getConnection();
         Statement stmt = conn.createStatement();
         //******************************************************
-        //************** ²§°Ê¸ê®Æ ******************************
+        //************** ç•°å‹•è³‡æ–™ ******************************
         //******************************************************
-        //stmt.executeUpdate("Insert into ­û¤u¸ê®Æªí values(18,'¤ı¤p©ú','¨k','·s¦Ë¥«²MµØ¤j¾Ç',20000,2)");
-        //stmt.executeUpdate("Delete From ­û¤u¸ê®Æªí Where ­û¤u½s¸¹=18");
+        //stmt.executeUpdate("Insert into å“¡å·¥è³‡æ–™è¡¨ values(18,'ç‹å°æ˜','ç”·','æ–°ç«¹å¸‚æ¸…è¯å¤§å­¸',20000,2)");
+        //stmt.executeUpdate("Delete From å“¡å·¥è³‡æ–™è¡¨ Where å“¡å·¥ç·¨è™Ÿ=18");
         
         //******************************************************
         
         
         //******************************************************
-        //************** ¬d¸ß¸ê®Æ ******************************
+        //************** æŸ¥è©¢è³‡æ–™ ******************************
         //******************************************************
         
-        ResultSet rs = stmt.executeQuery("Select * From ­û¤u¸ê®Æªí");
-        System.out.println("­û¤u½s¸¹\t©m¦W\t¦a§}");
+        ResultSet rs = stmt.executeQuery("Select * From å“¡å·¥è³‡æ–™è¡¨");
+        System.out.println("å“¡å·¥ç·¨è™Ÿ\tå§“å\tåœ°å€");
         while(rs.next()){
-            System.out.print(rs.getInt("­û¤u½s¸¹")+"\t\t");
-            System.out.print(rs.getString("©m¦W")+"\t");
-            System.out.println(rs.getString("¦a§}"));
+            System.out.print(rs.getInt("å“¡å·¥ç·¨è™Ÿ")+"\t\t");
+            System.out.print(rs.getString("å§“å")+"\t");
+            System.out.println(rs.getString("åœ°å€"));
         }   
         //******************************************************
         
