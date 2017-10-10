@@ -1,4 +1,5 @@
-
+--利用Java或Python換掉第一行欄位名稱
+--Date,Customer_Code,Employee_Index,Residence,Sex,age,Open_Date,New_Cust,Seniority,Primary,Primary_Date,Type_beg,Customer_Relation,Residence_Index,Foreigner_Index,Spouse,Channel,Death_Index,Address_Type,Province_Code,Province_Name,Active_Index,Income,Segmentation,Saving_Acct,Guarantees,Current_Acct,Derivative_Acct,Payroll1_Acct,Particular_Account,Mas_particular_Account,Particular_Acct,Particular_Plus_Acct,Short_Deposits,Medium_Deposits,Long_Deposits,E_account,Funds,Mortgage,Pensions1,Loans,Taxes,Credit_Card,Securities,Home Account,Payroll2_Acct,Pensions2,Direct_Debit
 
 --每格有幾種
 -- MS SQL
