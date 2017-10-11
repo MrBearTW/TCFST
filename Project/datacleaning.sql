@@ -123,3 +123,12 @@ where ["age"] = ' NA'    -- NA前面要有空白建
 
 ["ind_actividad_cliente"] ='NA'    -- NA前面 沒有 空白建
 --27734筆
+
+
+
+--處理27734資料MS_SQL
+
+SELECT COUNT(DISTINCT fecha_dato),COUNT(DISTINCT ncodpers),COUNT(DISTINCT ind_empleado),COUNT(DISTINCT pais_residencia),COUNT(DISTINCT sexo),COUNT(DISTINCT age),COUNT(DISTINCT fecha_alta),COUNT(DISTINCT ind_nuevo),COUNT(DISTINCT antiguedad),COUNT(DISTINCT indrel),COUNT(DISTINCT ult_fec_cli_1t),COUNT(DISTINCT indrel_1mes),COUNT(DISTINCT tiprel_1mes),COUNT(DISTINCT indresi),COUNT(DISTINCT indext),COUNT(DISTINCT conyuemp),COUNT(DISTINCT canal_entrada),COUNT(DISTINCT indfall),COUNT(DISTINCT tipodom),COUNT(DISTINCT cod_prov),COUNT(DISTINCT nomprov),COUNT(DISTINCT ind_actividad_cliente),COUNT(DISTINCT renta),COUNT(DISTINCT segmento),COUNT(DISTINCT ind_ahor_fin_ult1),COUNT(DISTINCT ind_aval_fin_ult1),COUNT(DISTINCT ind_cco_fin_ult1),COUNT(DISTINCT ind_cder_fin_ult1),COUNT(DISTINCT ind_cno_fin_ult1),COUNT(DISTINCT ind_ctju_fin_ult1),COUNT(DISTINCT ind_ctma_fin_ult1),COUNT(DISTINCT ind_ctop_fin_ult1),COUNT(DISTINCT ind_ctpp_fin_ult1),COUNT(DISTINCT ind_deco_fin_ult1),COUNT(DISTINCT ind_deme_fin_ult1),COUNT(DISTINCT ind_dela_fin_ult1),COUNT(DISTINCT ind_ecue_fin_ult1),COUNT(DISTINCT ind_fond_fin_ult1),COUNT(DISTINCT ind_hip_fin_ult1),COUNT(DISTINCT ind_plan_fin_ult1),COUNT(DISTINCT ind_pres_fin_ult1),COUNT(DISTINCT ind_reca_fin_ult1),COUNT(DISTINCT ind_tjcr_fin_ult1),COUNT(DISTINCT ind_valo_fin_ult1),COUNT(DISTINCT ind_viv_fin_ult1),COUNT(DISTINCT ind_nomina_ult1),COUNT(DISTINCT ind_nom_pens_ult1),COUNT(DISTINCT ind_recibo_ult1)
+FROM santander.train_ver2;
+where ["age"] = ' NA' 
+--6種日期  7340個ID
