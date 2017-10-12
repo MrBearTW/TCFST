@@ -136,24 +136,18 @@ where ["age"] = ' NA'
 
 
 
--- 以下是只有20150528那個月份的相關SQL指令
+-- 以下是針對只有20150528那個月份的相關MS_SQL指令
 
 -- 計算屬性欄位
-SELECT 
-      
-      ["indfall"], count(*) as cft
- 
+SELECT ["indfall"], count(*) as indfall
 FROM [master].[dbo].[ver0528]
-
-group by 
-            ["indfall"]
+group by ["indfall"]
 
 
 -- 計算各個欄位的加總最大最小變異數   compute by sql
 
 SELECT convert(int,["ind_ahor_fin_ult1"]) as ind_ahor_fin_ult1,
-	   convert(int,["ind_cco_fin_ult1"]) as ind_cco_fin_ult1,
-
+        convert(int,["ind_cco_fin_ult1"]) as ind_cco_fin_ult1
 FROM [master].[dbo].[ver0528] 
 ORDER BY ["ind_ahor_fin_ult1"] 
 COMPUTE   SUM(convert(int,["ind_ahor_fin_ult1"]))
