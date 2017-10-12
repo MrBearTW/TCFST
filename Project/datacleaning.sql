@@ -42,11 +42,12 @@ FROM santander.train_ver2;
 
 SELECT avg(renta),max(renta),min(renta),std(renta),stddev(renta)
 FROM santander.train_ver2;
--- 106764.87614173251	28894395.51	0	212674.5912153228	212674.5912153228
+-- 106764.87614173251	28894395.51	0	212674.5912153228	212674.5912153228*
 
 SELECT avg(age),max(age),min(age),std(age),stddev(age)
 FROM santander.train_ver2;
 -- 40.0998	164	0	17.26271831291885	17.26271831291885
+-- 0  91.87
 
 SELECT avg(antiguedad),max(antiguedad),min(antiguedad),std(antiguedad),stddev(antiguedad)
 FROM santander.train_ver2;
