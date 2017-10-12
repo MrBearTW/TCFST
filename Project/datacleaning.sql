@@ -134,3 +134,27 @@ FROM santander.train_ver2;
 where ["age"] = ' NA' 
 --6種日期  7340個ID
 
+
+
+-- 以下是只有20150528那個月份的相關SQL指令
+
+-- 計算屬性欄位
+SELECT 
+      
+      ["indfall"], count(*) as cft
+ 
+FROM [master].[dbo].[ver0528]
+
+group by 
+            ["indfall"]
+
+
+-- 計算各個欄位的加總最大最小變異數   compute by sql
+
+SELECT convert(int,["ind_ahor_fin_ult1"]) as ind_ahor_fin_ult1,
+	   convert(int,["ind_cco_fin_ult1"]) as ind_cco_fin_ult1,
+
+FROM [master].[dbo].[ver0528] 
+ORDER BY ["ind_ahor_fin_ult1"] 
+COMPUTE   SUM(convert(int,["ind_ahor_fin_ult1"]))
+        , SUM(convert(int,["ind_cco_fin_ult1"]));
