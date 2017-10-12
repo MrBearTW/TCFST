@@ -133,3 +133,4 @@ SELECT COUNT(DISTINCT fecha_dato),COUNT(DISTINCT ncodpers),COUNT(DISTINCT ind_em
 FROM santander.train_ver2;
 where ["age"] = ' NA' 
 --6種日期  7340個ID
+
