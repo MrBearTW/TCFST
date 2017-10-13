@@ -144,7 +144,7 @@ FROM [master].[dbo].[ver0528]
 group by ["indfall"]
 
 
--- 計算各個欄位的加總最大最小變異數   compute by sql
+-- 計算各個欄位的加總最大最小變異數  請搜尋 compute by sql
 
 SELECT convert(int,["ind_ahor_fin_ult1"]) as ind_ahor_fin_ult1,
         convert(int,["ind_cco_fin_ult1"]) as ind_cco_fin_ult1
@@ -152,3 +152,9 @@ FROM [master].[dbo].[ver0528]
 ORDER BY ["ind_ahor_fin_ult1"] 
 COMPUTE   SUM(convert(int,["ind_ahor_fin_ult1"]))
         , SUM(convert(int,["ind_cco_fin_ult1"]));
+
+
+--- 選出canal_entrada怪怪不應該是數字的部分 MS_SQL指令
+SELECT *
+FROM [master].[dbo].[ver0528]
+where ["canal_entrada"] in ('004','007','013','025')
