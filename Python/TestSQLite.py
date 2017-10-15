@@ -9,12 +9,14 @@ c.execute('''select * from MSG where name = 'APPLE' ''')            #查詢
 conn.commit()
 print('ZZZZZZZZZZ',c.fetchall())
 
-c.execute('''delete from MSG where name = 'APPLE' ''')              #刪除
-conn.commit()
-print('AAAAAAAAAA',c.fetchall())
+#c.execute('''delete from MSG where name = 'APPLE' ''')              #刪除
+#conn.commit()
+#print('AAAAAAAAAA',c.fetchall())
 
-c.execute('''select * from MSG ''')
-conn.commit()
-print('BBBBBBBBBB',c.fetchall())
+#c.execute('''select * from MSG ''')
+#conn.commit()
+#print('BBBBBBBBBB',c.fetchall())
+
+print(c.fetchall())
 
 conn.close()
