@@ -6,14 +6,14 @@ COLL_WINNERS = 'winners'
 # 
 def get_mongo_database(db_name,host='localhost',port=27017,username=None,password=None):
     if username and password:
-        mongo_uri = 'mongodb://%s:%s@%s/%s'(username,password,host,db_name)
+        mongo_uri = 'mongodb://%s:%s@%s/%s'(username,password,host,db_name)    # uri = Unifrom Resource Identifierw統一資源識別元
         conn = MongoClient(mongo_uri)
     else:
         conn = MongoClient(host,port)
     return conn[db_name]
 
 
-def mongo_coll_to_dicts(dbname='test',collname='test',query={},del_id=True,**kw):    # **kw 大概就是參數同上
+def mongo_coll_to_dicts(dbname='test',collname='test',query={},del_id=True,**kw):    # del_id 控制要不要刪除ObjetID 預設是True 要刪除    # **kw 大概就是參數同上
     db = get_mongo_database(dbname,**kw)
     
     #db[collname].remove({'name': 'Paul Dirac'})

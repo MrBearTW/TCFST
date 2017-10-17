@@ -1,5 +1,5 @@
 # 要先安裝
-# pip install pymongo
+# pip install pymongo    安裝到Anaconda
 from pymongo import MongoClient
 
 DB_NOBEL_PRIZE = 'nobel_prize'

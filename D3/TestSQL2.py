@@ -18,7 +18,7 @@ class Winner(Base):
     def __repr__(self):
         return '<Winner(name={0$s},category={0$s},year={0$s})>'.format(self.name,self.category,self.year)
 
-# Base.metadata.create_all(engine)    # 建立好就不用在建立了
+Base.metadata.create_all(engine)    #會自動偵測是否已經建立，不會重複建立    (應該是錯的># 建立好就不用在建立了)
 
 nobel_winners = [
 {'category': 'Physics',
