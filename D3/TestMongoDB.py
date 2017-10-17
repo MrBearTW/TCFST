@@ -1,3 +1,5 @@
+# 要先安裝
+# pip install pymongo
 from pymongo import MongoClient
 
 DB_NOBEL_PRIZE = 'nobel_prize'
