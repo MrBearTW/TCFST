@@ -18,12 +18,13 @@ nobel_winners = [
 import json
 
 with open('nobel_winner3.json','w')as f:
-    json.dump(nobel_winners,f)
+    json.dump(nobel_winners,f)    # 寫入
 print(nobel_winners)
-print("\n")
+
+print("1間隔間隔間隔間隔間隔間隔")
 
 with open('nobel_winner3.json')as f:
-    nobel_winners=json.load(f)
+    nobel_winners=json.load(f)    # 從JSON讀入
 print(nobel_winners)
 
 #python 讀入是用dict方式讀入  要看JSON格式還是要直接開檔案看

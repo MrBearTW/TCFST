@@ -1,10 +1,13 @@
-from sqlalchemy import create_engine
+﻿from sqlalchemy import create_engine
 from sqlalchemy import Column,Integer,String,Enum
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker 
+from sqlalchemy.orm import sessionmaker
 
-engine =create_engine('sqlite:///nobile_prize.db',echo=True)
+engine = create_engine('sqlite:///nobel_prize.db', echo=True)
 Base = declarative_base()
+
+Session = sessionmaker(bind=engine)
+session = Session()
 
 class Winner(Base):
     __tablename__='winners'
@@ -14,11 +17,10 @@ class Winner(Base):
     year= Column(Integer)
     nationality = Column(String)
     sex = Column(Enum('male','female'))
-
+    
     def __repr__(self):
-        return '<Winner(name={0$s},category={0$s},year={0$s})>'.format(self.name,self.category,self.year)
-
-# Base.metadata.create_all(engine)    # 建立好就不用在建立了
+        return '<Winner(name=%s,category=%s,year=%s)>'%(self.name,self.category,self.year)
+        
 
 nobel_winners = [
 {'category': 'Physics',
@@ -36,15 +38,10 @@ nobel_winners = [
 'nationality': 'Polish',
 'sex': 'female',
 'year': 1911}
-]
+]        
+        
+Base.metadata.create_all(engine)
 
-Session = sessionmaker(bind=engine)
-session = Session()
-
-# 寫入資料
-#winner_rows = [Winner(**w) for w in nobel_winners]
-#session.add_all(winner_rows)
-
-# 讀取資料
-print(session.query(Winner).all())
+winner_rows = [Winner(**w) for w in nobel_winners]
+session.add_all(winner_rows)
 session.commit()

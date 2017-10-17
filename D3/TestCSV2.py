@@ -29,9 +29,11 @@ with open('nobel_winner2.csv')as f:
     reader = csv.reader(f)
     for row in reader:
         print(row)
+print('第一個間隔')
 print(nobel_winners)
-
+print('第二個間隔')
 with open('nobel_winner2.csv')as f:
     reader = csv.DictReader(f)
     nobel_winners = list(reader)
 print(nobel_winners)
+print('第三個間隔')

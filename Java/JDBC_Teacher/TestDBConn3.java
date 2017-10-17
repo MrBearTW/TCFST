@@ -1,13 +1,13 @@
-//java -cp .;C:\JavaSpace\* TestDBConn2
+//java -cp .;C:\JavaSpace\* TestDBConn3
 
-//java -cp .;* TestDBConn2
+//java -cp .;* TestDBConn3
 
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.io.IOException;
 import java.sql.SQLException;
-public class TestDBConn2{
+public class TestDBConn3{
     public static void main(String args[]) throws IOException, SQLException,ClassNotFoundException{
         DBSource db = new SimpleDBSource();
         Connection conn = db.getConnection();
@@ -16,8 +16,7 @@ public class TestDBConn2{
         //************** 異動資料 ******************************
         //******************************************************
         //stmt.executeUpdate("Insert into 員工資料表 values(18,'王小明','男','新竹市清華大學',20000,2)");
-        //stmt.executeUpdate("Delete From 員工資料表 Where 員工編號=18");
-        
+        //stmt.executeUpdate("Delete From 員工資料表 Where 員工編號=18");       
         //******************************************************
         
         

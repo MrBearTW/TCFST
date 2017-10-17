@@ -6,6 +6,7 @@ c = conn.cursor()
 #c.execute('''insert into MSG values(1,'APPLE','OH YA')''')         #新增資料
 #c.execute('''insert into MSG values(2,'AKEN','YOLO')''')
 #c.execute('''select * from MSG where name = 'APPLE' ''')            #查詢
+
 c.execute('''select * from MSG ''')  
 conn.commit()
 print('ZZZZZZZZZZ',c.fetchall())

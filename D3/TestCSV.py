@@ -1,3 +1,5 @@
+# 直接讀取後寫到CSV檔
+
 nobel_winners = [
 {'category': 'Physics',
 'name': 'Albert Einstein',
@@ -21,11 +23,10 @@ cols = list (nobel_winners[0].keys())  #3.0以上要寫List才能用sort功能
 cols.sort()
 
 with open('nobel_winner.csv','w')as f:    # as file
-    f.write(','.join(cols)+"\n")  #欄位
+    f.write(','.join(cols)+"\n")  #寫出欄位名稱
     for o in nobel_winners:       #做每個欄位 o是一組大跨號{}中的內容
         row = [str(o[col]) for col in cols]
         f.write(','.join(row)+'\n')
-        f.write(o[col]+','+'\n')
         #print(o)
         #print(o['category'],o['name'],o['nationality'])
 
