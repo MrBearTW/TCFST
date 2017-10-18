@@ -7,18 +7,19 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.io.IOException;
 import java.sql.SQLException;
-public class TestDBConn2{
-    public static void main(String args[]) throws IOException, SQLException,ClassNotFoundException{
+
+public class TestDBConn2 {
+    public static void main(String args[]) throws IOException, SQLException, ClassNotFoundException {
         DBSource db = new SimpleDBSource();
         Connection conn = db.getConnection();
         Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("Select * From å“¡å·¥è³‡æ–™è¡¨");
-        System.out.println("å“¡å·¥ç·¨è™Ÿ\tå§“å\tåœ°å€");
-        while(rs.next()){
-            System.out.print(rs.getInt("å“¡å·¥ç·¨è™Ÿ")+"\t\t");
-            System.out.print(rs.getString("å§“å")+"\t");
-            System.out.println(rs.getString("åœ°å€"));
-        }   
+        ResultSet rs = stmt.executeQuery("Select * From ­û¤u¸ê®Æªí");
+        System.out.println("­û¤u½s¸¹\t©m¦W\t¦a§}");
+        while (rs.next()) {
+            System.out.print(rs.getInt("­û¤u½s¸¹") + "\t\t");
+            System.out.print(rs.getString("©m¦W") + "\t");
+            System.out.println(rs.getString("¦a§}"));
+        }
         db.closeConnection(conn);
 
     }
