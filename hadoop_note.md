@@ -1,40 +1,41 @@
+# Hadoop note
 
-# YARN
-Batch
-Interactive
-Online
-Streaming
+## YARN有四種模式
+Batch<br />
+Interactive<br />
+Online<br />
+Streaming<br />
 
 
 ## 用CentOS建立master node
-Master node建議8G
-Worker node建議4G
-建立虛擬硬碟>>VMDK格式>>動態配置>>建議48GB>>GPU兩核>>網路一張網卡(『僅限主機』介面卡)
-掛載虛擬光碟(CentOS iso檔案)
+Master node建議8G<br />
+Worker node建議4G<br />
+建立虛擬硬碟>>VMDK格式>>動態配置>>建議48GB>>GPU兩核>>網路一張網卡(『僅限主機』介面卡)<br />
+掛載虛擬光碟(CentOS iso檔案)<br />
 
 啟動虛擬主機>>English>>美式鍵盤>>Basic Storage Devices>>Yes,discard any data
-Hostname:
-Taipei Time
-設定ROOT密碼：
+Hostname:master1<br />
+Taipei Time<br />
+設定ROOT密碼：<br />
 
-Creat Custom Layout>>
-1.Mount point:/boot    ext4    200MB    fixed size
-2.選swap後就會反灰    swap    200MB    fixed size
-3.Mount point:/    ext4    Fill to maximum allowable size
+### 設定Creat Custom Layout<br />
+1.Mount point:/boot    ext4    200MB    fixed size<br />
+2.選swap後就會反灰    swap    200MB    fixed size<br />
+3.Mount point:/    ext4    Fill to maximum allowable size<br />
 
->>format>>選Desktop模式
+>>format>>選Desktop模式<br />
 
-License check
-建立使用者帳號密碼
-選NTP Server
-Kdump選預設
+License check<br />
+建立使用者帳號密碼<br />
+選NTP Server<br />
+Kdump選預設<br />
 
 登入
 
-設定網路
-改IPv4
-Address:192.168.56.101
-Netmask:24
+### 設定網路
+改IPv4<br />
+Address:192.168.56.101<br />
+Netmask:24<br />
 Gateway:192.168.56.1(對應到援主機的虛擬網路卡IP位置)
 
 ### 切換成root身份
@@ -146,12 +147,12 @@ dd把那一行刪掉，:wq存檔離開
 > vi /etc/hosts
 
 最後面加上
----
+```
 192.168.56.101 master1
 192.168.56.102 slave1
 192.168.56.103 slave2
 192.168.56.104 slave3
----
+```
 
 ### 複製編輯好的hosts檔案到其他台
 > scp /etc/hosts root@192.168.56.102:/etc/hosts
@@ -195,14 +196,14 @@ cm571資料夾出現repodata
 > vim cloudera.repo
 
 下方改成
----
+```
 [cloudera-media]
 name=cloudera-$releasever - Mediai
 baseurl=http://master1/cm571
 gpgcheck=1
 enabled=1
 gpgkey=http://master1/cm571/RPM-GPG-KEY-cloudera
----
+```
 ### 檢查 cloudera-6 - Mediai  的狀態是  7
 > yum repolist
 
