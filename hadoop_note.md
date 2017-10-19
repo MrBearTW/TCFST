@@ -180,6 +180,7 @@ ping名稱看通不通
 > createrepo .
 
 cm571資料夾出現repodata
+在這個資料夾建立安裝檔的index
 
 ## 安裝Cloudera Manager Server
 
