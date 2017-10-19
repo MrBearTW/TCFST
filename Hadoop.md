@@ -223,23 +223,31 @@ gpgkey=http://master1/cm571/RPM-GPG-KEY-cloudera
 ### 確認7180port有啟動，狀態是Listen
 > lsof -i:7180
 
-本機瀏覽器開啟可以看到登入畫面
+本機瀏覽器開啟可以看到登入畫面<br />
 http://192.168.56.101:7180/
 
-預設密碼 admin/admin
+預設密碼 admin/admin<br />
 
-入後搜尋
-192.168.56.10[1-4] SEARCH
+登入後搜尋<br />
+`192.168.56.10[1-4] `
+SEARCH
 
 
-More Option
-把下面原本有的刪掉
-加入
+More Option<br />
+把下面原本有的按減號刪掉<br />
+加入<br />
+```
 http://192.168.56.101/cdh571
-回到上一層
-
-Custom Repository
+```
+回到上一層<br />
+Custom Repository 加入<br />
+```
 http://192.168.56.101/cm571/
-
-Custom GPG Key URL: 
+```
+Custom GPG Key URL: 加入<br />
+```
 http://192.168.56.101/cm571/RPM-GPG-KEY-cloudera
+```
+
+# Day3 2017/10/25
+<br />
