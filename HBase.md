@@ -78,13 +78,6 @@ enable Table<br />
 get只會查出最新那一個<br />
 
 
-
-
-
-
-
-
-
 <br />
 <br />
 <br />
