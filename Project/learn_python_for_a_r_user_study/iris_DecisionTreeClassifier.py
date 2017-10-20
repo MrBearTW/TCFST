@@ -7,6 +7,15 @@ iris = load_iris()
 iris_X = iris.data
 iris_y = iris.target
 
+'''
+print(iris)
+print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+print(iris_X)
+print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+print(iris_y)
+'''
+
+
 # 切分訓練與測試資料
 train_X, test_X, train_y, test_y = train_test_split(iris_X, iris_y, test_size = 0.3)
 
