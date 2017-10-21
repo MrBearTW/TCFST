@@ -2,7 +2,7 @@
 
 ## NoSQL類型
 |類型|實例|
-|:---:|--|--|
+|:---:|--|
 |文件儲存|mongoDB|
 |圖型儲存(路徑式)|FlockDB|
 |KeyValue儲存|HBase Cassandra|

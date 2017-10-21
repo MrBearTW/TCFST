@@ -1,29 +1,29 @@
-# Import
-from sklearn.preprocessing import scale
+# Import `datasets` from `sklearn`
+from sklearn import datasets
 
-# Apply `scale()` to the `digits` data
-data = scale(digits.data)
+# Load in the `digits` data
+digits = datasets.load_digits()
 
+# Print the `digits` data 
+print(digits)
 
-# Import `train_test_split`
-from sklearn.cross_validation import train_test_split
+# Import the `pandas` library as `pd`
+import pandas as pd
 
-# Split the `digits` data into training and test sets
-X_train, X_test, y_train, y_test, images_train, images_test = train_test_split(data, digits.target, digits.images, test_size=0.25, random_state=42)
+# Load in the data with `read_csv()`
+digits = pd.read_csv("http://archive.ics.uci.edu/ml/machine-learning-databases/optdigits/optdigits.tra", header=None)
 
+# Print out `digits`
+print(digits)
 
-# Number of training features
-n_samples, n_features = X_train.shape
+# Get the keys of the `digits` data
+print(digits.keys())
 
-# Print out `n_samples`
-print(n_samples)
+# Print out the data
+print(digits.data)
 
-# Print out `n_features`
-print(n_features)
+# Print out the target values
+print(digits.target)
 
-# Number of Training labels
-n_digits = len(np.unique(y_train))
-
-# Inspect `y_train`
-print(len(y_train))
-
+# Print out the description of the `digits` data
+print(digits.DESCR)
