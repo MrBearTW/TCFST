@@ -3,7 +3,7 @@
 ## 課本規劃
 課程會函蓋CH4~9<br />
 DAY1上CH2~3<br />
-DAY2上4~6<br />
+DAY2上CH4~6<br />
 
 ## 安裝CentOS
 ### VM設定

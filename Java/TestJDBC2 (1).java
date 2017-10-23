@@ -1,4 +1,6 @@
 //java -cp .;C:\JavaSpace\* TestJDBC2
+java -classpath .;C:\JavaSpace\Java\mysql-connector-java-5.1.44\mysql-connector-java-5.1.44-bin.jar TestJDBC1
+Loading JDBC driver
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
