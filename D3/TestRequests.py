@@ -23,7 +23,7 @@ print(reponse.status_code)
 data = reponse.json()
 print(type(data))
 
-#print(data[0].keys())    # [0]是因為傳回來的是個List  有加
+#print(data[0].keys())    # [0]是因為傳回來的是個List  小技巧：有加[]的是List
 #print(reponse.text)
 
 

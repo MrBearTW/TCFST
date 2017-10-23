@@ -18,13 +18,14 @@ nobel_winners = [
 'year': 1911}
 ]
 
-cols = list (nobel_winners[0].keys())  #3.0以上要寫List才能用sort功能
-                                       #keys取出所有資料共同的欄位名稱-->cols就是標題欄
+cols = list(nobel_winners[0].keys())  #3.0以上要寫List才能用sort功能
+                                      #keys取出所有資料共同的欄位名稱-->cols就是標題欄
+                                      #[0]是因為傳回來的是個List
 cols.sort()
 
 with open('nobel_winner.csv','w')as f:    # as file
     f.write(','.join(cols)+"\n")  #寫出欄位名稱
-    for o in nobel_winners:       #做每個欄位 o是一組大跨號{}中的內容
+    for o in nobel_winners:       #做每個欄位 o是一組大跨號{ }中的內容
         row = [str(o[col]) for col in cols]
         f.write(','.join(row)+'\n')
         #print(o)
