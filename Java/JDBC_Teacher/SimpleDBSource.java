@@ -17,8 +17,7 @@ public class SimpleDBSource implements DBSource{
         props.load(new FileInputStream(config));
         url = props.getProperty("db.url");
         user = props.getProperty("db.user");
-        passwd = props.getProperty("db.passwd");
-        
+        passwd = props.getProperty("db.passwd");        
         Class.forName(props.getProperty("db.driver"));
     }
     public Connection getConnection() throws SQLException{

@@ -1,0 +1,21 @@
+Date: Tue, 24 Oct 2017 08:43:58 GMT
+Content-Type: text/plain
+Last-Modified: Thu, 03 Oct 2013 22:29:35 GMT
+Etag: da12dc18910d62f6850b0676dc309ee7
+X-Timestamp: 1380839374.95251
+X-Object-Meta-Mtime: 1310309891.0
+X-Trans-Id: txeffa8f0be2e14657a7396-0059ee7ccb
+X-Varnish: 282081046, 178975682, 115608628, 417218865 221646765
+Via: 1.1 varnish-v4, 1.1 varnish-v4, 1.1 varnish-v4, 1.1 varnish-v4
+Content-Encoding: gzip
+Vary: Accept-Encoding
+Age: 32899
+X-Cache: cp1063 pass, cp2011 pass, cp4026 pass, cp4026 hit/132
+X-Cache-Status: hit
+Strict-Transport-Security: max-age=106384710; includeSubDomains; preload
+X-Analytics: https=1;nocookies=1
+X-Client-Ip: 61.222.194.251
+Access-Control-Allow-Origin: *
+Access-Control-Expose-Headers: Age, Date, Content-Length, Content-Range, X-Content-Duration, X-Cache, X-Varnish
+Timing-Allow-Origin: *
+Accept-Ranges: bytes

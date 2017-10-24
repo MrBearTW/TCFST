@@ -1,5 +1,5 @@
 import dataset
-db =dataset.connect('sqlite:///nobel_prize.db')
+db =dataset.connect('mysql://localhost:3306/company')    # mysql://localhost:3306/company  sqlite:///nobel_prize.db
 
 wtable=db['winners']
 wtable.drop()
