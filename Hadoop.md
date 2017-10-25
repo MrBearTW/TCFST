@@ -57,7 +57,7 @@ Gateway:192.168.56.1(對應到援主機的虛擬網路卡IP位置)
 
 VIM編輯器
 
-'''
+```
 K上J下L左H右  
 O寫入新的一行  
 I進入編輯模式  
@@ -65,7 +65,7 @@ dd刪除一整行
 ESC後  
 :wq 存檔離開  
 :q! 不存檔離開  
-'''
+```
 
 改成重新開機就會是=1  
 
@@ -121,16 +121,13 @@ dd把那一行刪掉，:wq存檔離開
 
 ### 設定伺服器開啟(只有master要做)
 >chkconfig httpd on  
-
 >chkconfig |grep httpd  
-
 >service httpd start  
 
 可以用host主機連192.168.56.101看看有沒有連到阿帕契頁面  
 
 ### 修改slave的網路設定
 將eth0改成192.168.56.102/3/4  
-
 > su    #改用root權限，輸入密碼  
 > cd /etc/udev/rules.d  
 > rm 70-persistent-net.rules    #網路設定檔  
@@ -161,9 +158,9 @@ ping名稱看通不通
 ## 設定SSH免帳號密碼
 老師跳過PPT62~66  
   
-### 複製cdh571,cm571  
-使用WINSCP，把兩個資料夾cdh571,cm571複製到master內的/var/www/html  
-> yum repolist  
+### 複製cdh571,cm571
+使用WINSCP，用root帳號連線到master主機
+把兩個資料夾cdh571,cm571複製到master內的/var/www/html，不改資料夾名字  
 > cd /var/www/html/  
   
 ### 先安裝createrepo
@@ -226,6 +223,10 @@ More Option<br />
 http://192.168.56.101/cdh571
 ```
 回到上一層<br />
+Select the version of CDH  
+選項CDH-5.7.1cdh5.7.1.p0.11  
+要勾起來  
+  
 Custom Repository 加入<br />
 ```
 http://192.168.56.101/cm571/
