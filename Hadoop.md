@@ -1,61 +1,61 @@
 # Hadoop note
 
 ## YARN有四種模式
-Batch<br />
-Interactive<br />
-Online<br />
-Streaming<br />
-
-
+Batch  
+Interactive  
+Online  
+Streaming  
+  
 ## 用CentOS建立master node
-Master node建議8G<br />
-Worker node建議4G<br />
-建立虛擬硬碟>>VMDK格式>>動態配置>>建議48GB>>GPU兩核>>網路一張網卡(『僅限主機』介面卡)<br />
-掛載虛擬光碟(CentOS iso檔案)<br />
-
+Master node建議8G  
+Worker node建議4G  
+建立虛擬硬碟>>VMDK格式>>動態配置>>建議48GB>>GPU兩核>>網路一張網卡(『僅限主機』介面卡)  
+掛載虛擬光碟(CentOS iso檔案)  
+  
 啟動虛擬主機>>English>>美式鍵盤>>Basic Storage Devices>>Yes,discard any data
-Hostname:master1<br />
-Taipei Time<br />
-設定ROOT密碼：<br />
+Hostname:master1  
+Taipei Time  (所有Cluster主機要一致)  
+設定ROOT密碼：123456  
 
-### 設定Creat Custom Layout<br />
-1.Mount point:/boot    ext4    200MB    fixed size<br />
-2.選swap後就會反灰    swap    200MB    fixed size<br />
-3.Mount point:/    ext4    Fill to maximum allowable size<br />
-
->>format>>選Desktop模式<br />
-
-License check<br />
-建立使用者帳號密碼<br />
-選NTP Server<br />
-Kdump選預設<br />
-
-登入
-
+### 設定Creat Custom Layout
+1.Mount point:/boot    ext4    200MB    fixed size  
+2.選swap後就會反灰    swap    200MB    fixed size  
+3.Mount point:/    ext4    Fill to maximum allowable size  
+  
+format>>選Desktop模式  
+  
+License check  
+建立使用者帳號密碼  
+選NTP Server  
+Kdump選預設  
+  
+登入  
+  
 ### 設定網路
-改IPv4<br />
-Address:192.168.56.101<br />
-Netmask:24<br />
-Gateway:192.168.56.1(對應到援主機的虛擬網路卡IP位置)
-
+改IPv4  
+```
+Address:192.168.56.101  
+Netmask:24  
+Gateway:192.168.56.1(對應到援主機的虛擬網路卡IP位置)  
+```
 ### 切換成root身份
->su root
-
+`su root`
+  
 ### 關防火牆
->setup
-
-第二個Firewall configuration  空白鍵調整成關閉
-
-### 改swappiness
-
-改swappiness=1(預設=60)
->sysctl -w vm.swappiness=1
-
-查看
->cat /proc/sys/vm/swappiness
->vim /etc/sysctl.conf
-
-VIM編輯器指令  
+`setup`  
+  
+第二個Firewall configuration  用空白鍵調整成關閉  
+  
+### 改swappiness參數
+改swappiness=1(預設=60)  
+`sysctl -w vm.swappiness=1`
+  
+查看確認有改成功  
+`cat /proc/sys/vm/swappiness`  
+`cat /etc/sysctl.conf`  
+改成重新開機就會是=1  
+  
+ # VIM編輯器指令  
 ```
 K上J下L左H右  
 O寫入新的一行  
@@ -65,19 +65,19 @@ ESC後
 :wq 存檔離開  
 :q! 不存檔離開  
 ```
-
-改成重新開機就會是=1  
-
-
+  
+### 修改defrag
 修改/sys/kernel/mm/redhat_transparent_hugepage/defrag 開機時會讀到的記憶體管理參數(官方建議關閉)  
+寫入開機的設定檔中  
+`echo "never > /sys/kernal/mm/redhat_transparent_hugepage/defrag">> /etc/rc.local`
+檢查`cat /sys/kernel/mm/redhat_transparent_hugepage/defrag`
+會看到```always madvise [never]```
 
 '''
 >  覆蓋
 >> append  
 '''
 
-寫入開機的設定檔中  
->echo "never > /sys/kernal/mm/redhat_transparent_hugepage/de">> /etc/rc.local  
 
 
 ### 修改selinux(一種安全性設定，沒有disable的話，修改設定不會儲存)

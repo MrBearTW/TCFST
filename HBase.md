@@ -35,14 +35,14 @@
 查看命名空間<br />
 `list_namespace`<br />
 修改命名空間<br />
-``<br />
-刪除命名空間<br />
+``  
+刪除命名空間  
 ``<br />
 
 
 ## 建立Table
 建立Table: debugo_ns:users<br />
-`create 'user','info'`<br />
+`create 'user','info'` 建立<br />
 `put 'user', 'user1','info:phone', '0912345678'`<br />
 新增ColumnFamily(=school)進去(Table=user)<br />
 `alter 'user','school'`<br />
