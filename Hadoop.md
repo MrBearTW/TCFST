@@ -14,7 +14,7 @@ Worker node建議4G
   
 啟動虛擬主機>>English>>美式鍵盤>>Basic Storage Devices>>Yes,discard any data
 Hostname:master1  
-Taipei Time  (所有Cluster主機要一致)  
+Taipei Time (所有Cluster主機要一致)  
 設定ROOT密碼：123456  
 
 ### 設定Creat Custom Layout
@@ -55,7 +55,7 @@ Gateway:192.168.56.1(對應到援主機的虛擬網路卡IP位置)
 `cat /etc/sysctl.conf`  
 改成重新開機就會是=1  
   
- # VIM編輯器指令  
+ # VIM編輯器指整理  
 ```
 K上J下L左H右  
 O寫入新的一行  
@@ -65,8 +65,9 @@ ESC後
 :wq 存檔離開  
 :q! 不存檔離開  
 ```
+其實把vim都改用nano，世界可能更美好。  
   
-### 修改defrag
+### 修改defrag為never
 修改/sys/kernel/mm/redhat_transparent_hugepage/defrag 開機時會讀到的記憶體管理參數(官方建議關閉)  
 寫入開機的設定檔中  
 `echo "never > /sys/kernal/mm/redhat_transparent_hugepage/defrag">> /etc/rc.local`
@@ -77,53 +78,54 @@ ESC後
 >  覆蓋
 >> append  
 '''
-
-
-
-### 修改selinux(一種安全性設定，沒有disable的話，修改設定不會儲存)
-> su  
-> vim /etc/selinux/config  
-
+  
+### 修改selinux為disable
+一種安全性設定，沒有disable的話，修改設定不會儲存
+改使用root權限`su`  
+修改`vim /etc/selinux/config`  
+檢查確認一下`cat /etc/selinux/config`  
+  
 # Day2 2017/10/19
-每一台主機加入第二張網卡，選NAT(不是NAT_網路)，就是會看到的10.0.3.X  
-
-啟動虛擬主機
+主機加入第二張網卡，選NAT(不是NAT_網路)
+就是會看到可以連外網的10.0.3.X  
+  
+啟動虛擬主機  
 調整網路卡，確定兩張網路卡都將Connect automatically打勾  
-
-### 刪除eth0 Gateway 和 mask 
-先換成root  
-> su -  
   
+### 調整主機網路設定
+#### 刪除eth0 Gateway 和 mask 
+先換成root`su -`  
+    
 改連線設定檔，把Gateway刪掉  
-> vi /etc/sysconfig/network-scripts/ifcfg-eth0  
-  
-選到Gateway那一行  
-dd把那一行刪掉  
+`vi /etc/sysconfig/network-scripts/ifcfg-eth0`    
+選到Gateway那一行,dd把那一行刪掉  
 選到HWADDR(改MAC，之後複製製作成(slave node時才不會衝突)  
-dd把那一行刪掉，:wq存檔離開  
-
+dd把那一行刪掉`:wq`存檔離開  
+  
 ### 重新啟動網卡  
->service network restart(要root才能用)  
-
+`service network restart`(要root才能用)  
 或  
-> ifdown eth0  
-> ifup eth0  
+`ifdown eth0`  
+`ifup eth0`  
+重新啟動網路服務
 
+## 匯出再匯入製造出三台slave主機
 ### 匯出應用裝置
-匯出成OVA格式，記一下匯出的位置  
+匯出成OVA格式，記一下匯出的位置    
 ### 匯入應用裝置
-1.選到那一個OVA檔案，  
+1.選到那一個OVA檔案(上面匯出的位置)  
 2.改名字  
 3.改記憶體4096(slave)  
 4.打勾->重新初始化所有網路卡的MAC位置  
 5.選虛擬機放的位置(就是預設)  
-
+  
 ### 設定伺服器開啟(只有master要做)
->chkconfig httpd on  
->chkconfig |grep httpd  
->service httpd start  
-
-可以用host主機連192.168.56.101看看有沒有連到阿帕契頁面  
+`chkconfig httpd on`  
+`chkconfig |grep httpd`  
+`service httpd start`  
+理論上host主機(WIN7)  
+master1主機(centOS)  
+都可連到192.168.56.101看看有沒有連到Apache頁面  
 
 ### 修改slave的網路設定
 將eth0改成192.168.56.102/3/4  
@@ -136,51 +138,56 @@ dd把那一行刪掉，:wq存檔離開
 分別為master1,slave1/2/3  
 > vi /etc/sysconfig/network  
 
-### 改設定檔,先改master1,再複製到其他三台slave
-> vi /etc/hosts
-
-最後面加上
+### 改設定檔讓欉及電腦都認識彼此
+先改master1的，再複製到其他三台slave
+`vi /etc/hosts`  
+最後面加上  
 ```
 192.168.56.101 master1
 192.168.56.102 slave1
 192.168.56.103 slave2
 192.168.56.104 slave3
 ```
-
+  
 ### 複製編輯好的hosts檔案到其他台
-> scp /etc/hosts root@192.168.56.102:/etc/hosts
+`scp /etc/hosts root@192.168.56.102:/etc/hosts`  
+要slave密碼
+第一次連線會有確認
 
 ### 重新啟動全部電腦
-ping名稱看通不通
-> ping master1 / slave1 / slave2 / slave3
+ping名稱看個主機間網路通不通
+`ping master1`  
+`ping slave1`  
+`ping slave2`  
+`ping slave3`  
+互相都要通，總共ping 4*3=12次  
   
 ## 設定SSH免帳號密碼
-老師跳過PPT62~66  
+老師跳過PPT62~67  
   
-### 複製cdh571,cm571
+### 複製cdh571,cm571進入master1主機
 使用WINSCP，用root帳號連線到master主機
-把兩個資料夾cdh571,cm571複製到master內的/var/www/html，不改資料夾名字  
-> cd /var/www/html/  
+把兩個資料夾cdh571,cm571複製到master內的/var/www/html  
+不改資料夾名字  
+`cd /var/www/html/`  
   
 ### 先安裝createrepo
-> yum install createrepo  
+`yum install createrepo`  
 
 ## 在cm571資料夾 建立一個repodata  
-> createrepo .  
+`createrepo .`  
 cm571資料夾出現repodata  
 在這個資料夾建立安裝檔的index  
   
 ## 安裝Cloudera Manager Server
->cd /etc/yum.repos.d/  
-  
-檢查資料夾內有CentOS-Media.repo檔案  
->ls  
-  
+`cd /etc/yum.repos.d/`  
+`ls`檢查資料夾內有CentOS-Media.repo檔案  
+    
 ### 創造和修改cloudera.repo
 在資料夾內複製一個檔案(CentOS-Media.repo)改名叫做(cloudera.repo)  
-> cp CentOS-Media.repo cloudera.repo  
-> vim cloudera.repo  
-  
+`cp CentOS-Media.repo cloudera.repo`  
+修改cloudera.repo  
+`vim cloudera.repo`    
 下方改成  
 ```
 [cloudera-media]
@@ -190,129 +197,178 @@ gpgcheck=1
 enabled=1
 gpgkey=http://master1/cm571/RPM-GPG-KEY-cloudera
 ```
-### 檢查 cloudera-6 - Mediai  的狀態是  7
-> yum repolist  
+### 檢查 cloudera-6 - Media 的狀態是  7
+`yum repolist`  
+yum全名是Yellowdog Updater Modified，一種網路安裝與升級服務  
   
 ## 安裝cloudera-manager-server-db-2
-> yum install cloudera-manager-server-db-2  
-
+`yum install cloudera-manager-server-db-2`  
+  
 ### 啟動兩個服務
-> service cloudera-scm-server-db start  
-> service cloudera-scm-server start  
-要看到是OK  
+`service cloudera-scm-server-db start`  
+`service cloudera-scm-server start`  
+要看到是OK    
 
-#### PPT80頁安裝mysql跳過
-
+#### 老師跳過
+PPT68頁跳過(直接在html資料夾內處理了)
+PPT75改名跳過，直接延用cm571,cdh571
+PPT80頁安裝mysql跳過
+  
 ### 確認7180port有啟動，狀態是Listen
-> lsof -i:7180  
-
-本機瀏覽器開啟可以看到登入畫面<br />
-``http://192.168.56.101:7180/```
-預設密碼 admin/admin<br />
+`lsof -i:7180`    
+本機(master1)瀏覽器開啟可以看到登入畫面  
+```http://192.168.56.101:7180/```
+Cloudera預設帳密 admin/admin  
+補充：查看port指令`vi /etc/services`  
   
-# 首次登入後設定
-登入後搜尋<br />
-`192.168.56.10[1-4] `
-SEARCH按下去  
-  
-More Option<br />
-把下面原本有的按減號刪掉<br />
-加入<br />
+## 首次登入後設定(可用Win主機)
+登入後 
+選擇安裝免費的Cloudera Manager版本  
+搜尋  
+`192.168.56.10[1-4]`  
+SEARCH按下去，理想上會搜尋到四台主機  
+### Cluster Installation
+選Use Parcels(Recommended)後面的 More Option 進入  
+把下面原本有的按減號刪掉  
+留下一格刪除原本，改成  
 ```
 http://192.168.56.101/cdh571
 ```
-回到上一層<br />
-Select the version of CDH  
+回到上一層  
+#### 第一段Select the version of CDH  
 選項CDH-5.7.1cdh5.7.1.p0.11  
 要勾起來  
   
-Custom Repository 加入<br />
+#### 第二大段
+選Custom Repository 加入  
 ```
 http://192.168.56.101/cm571/
 ```
-Custom GPG Key URL: 加入<br />
+#### 第三大段
+Custom GPG Key URL: 加入
 ```
 http://192.168.56.101/cm571/RPM-GPG-KEY-cloudera
 ```
-
-# Day3 2017/10/25
-選七個
-HDFS  
-YARN  
+### 是否安裝JDK
+是  
+第二個勾不勾都可  
+### SSH設定
+打入密碼即可
+### 沒有卡住的話
+下一步下一步下一步  
+有的話...就比較麻煩...
+  
+### 選擇要安裝的Service
+選Custom Services
+可以一次挑戰七個  
+```
+HBase
+HDFS    
 HIVE  
-IMPALA
 HUE
-Coludera Manager
-zookepper
+IMPALA(好像沒有選這個,但後面有要用到...)
+Spark
+YARN(取代MapReduce)
+Zookepper
+```
+Zookepper勾三台主機(要奇數台)(slave3不勾)
+補充：基礎HDFS和YAARN和Zookepper一定要先裝。盡量先IMPALA再HUE。
 
+### 選擇要安裝的RDB
+選Use Embedded Database  
+右下Test Connection  
+都OK就可以下一步
+  
+# 理論上可以看到Congratulations
 
-zookepper要四台都勾
+## 下一步下一步下一步悲劇的話
+例如說曾經安裝到一半中斷關機後再重來的話  
+### 四台主機cloudera-scm-agent停掉
+先操作master  
+`service cloudera-scm-agent stop`
+把另外三台slave的服務也關掉  
+`ssh root@192.168.56.102`103,104
 
-DB選Embaded
-
-
-
-service cloudera-scm-agent stop
-
-把另外三台slave的服務也關掉
-ssh root@192.168.56.102
-
+此時cloudera-manager service應該還活著  
 進網頁把每一個node刪掉(把clusterg刪掉？)
-
-安裝失敗的話慢慢找原因
-可能是之前的資料沒有清乾淨
-cd /dfs/nn
-ll
-有current的話
-刪掉
-rm -rf current/
-
-# 直接用QUICK START
-
-
-cloudera manager功能介紹  
+重跑一次  
   
-
-跑`hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples.jar pi 10 100`
+### 助教大致流程
+還是失敗的話要慢慢找原因  
+可能是之前的資料沒有清乾淨  
+master主機用root帳號
+`cd /dfs/nn`  
+`ll`  
+有current的話，刪掉`rm -rf current/`  
+換到slave1`ssh root@slave1`  
+`cd /var/run/cloudera-scm-agent/process/117-hdfs-DATANODE/`
+`chown hdfs:hdfs supervisor.conf`可能還有vim進去改  
+回到master1主機`cd /var/log/hadoop-hdfs/`  
+再回到slave1`ssh root@slave1`  
+`cd /var/log/hadoop-hdfs/`  
+`vim hadoop-cmf-hdfs-DATANODE-slave1.log.out`  
+`cd /dfs/dn/`  
+`rm -rf current/`  
+`ssh root@slave2`  
+`cd /dfs/dn`  
+`rm -rf current/`  
+`ssh root@slave3`  
+`cd /dfs/dn`  
+`rm -rf current/`  
+`exit`三次回到master1  
+`cd /dfs/snn`
+`rm -rf current/`  
+  
+  
+# 直接用QUICK START主機來操作
+cloudera manager功能介紹 
+## 桌面Launch Cloudera Express
+啟動，記憶體要大於8G  
+或用指令啟動cloudera-manager  
+`sudo /home/cloudera/cloudera-manager --force  --express`  
+  
+## 看跑範例程式後YARN上面的資料 
+跑`hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples.jar pi 10 100`  
 YARN Applications可以看  
-Resource Manager可以看  
-
+Resource Manager可以看
+## 跑SPARK範例程  
 `HADOOP_USER_NAME=hdfs spark-submit --class org.apache.spark.examples.SparkPi --master yarn --deploy-mode cluster --num-executors 3 --driver-memory 512m --executor-memory 512m /usr/lib/spark/examples/lib/spark-examples-1.6.0-cdh5.7.0-hadoop2.6.0-cdh5.7.0.jar 100`  
+可以看SPARK和YARN等相關的資訊
   
-## 安裝順序
-HDFS YARN(impala要用的話，hue)
-
 ## hue  
 有WEB UI可以進入  
 可以上傳檔案到HDFS  
 可以管理HBase和Hive，操作query  
-操作Impala，下載範例檔案  
+操作Impala，可以下載範例檔案操作  
 ## HDFS
 有WEB UI可以進入  
 一個block是128MB  
-## CM Resource
+### HDFS底下的CM Resource
 Configuration  
 可以調整給較常用的服務較高的配置  
 從Static Service Pools進入  
 Configuration內可以設定比例  
 restart  
-
+  
+# 用指令操作Hadoop
 ## hadoop指令
 看HDFS下有哪一些檔案  
-`hadoop fs -ls /`  
+`hadoop fs -ls /`
+
 ### 增加使用者
-`sudo su`  
+`sudo su`使用Roo帳號  
 看目前有哪一些使用者`hadoop fs -ls /user`  
 下這一行指令HADOOP_USER_NAME=hdfs就可以變成有權限使用者  
-建立目錄`HADOOP_USER_NAME=hdfs hadoop fs -mkdir /user/test`  
-改目錄權限`HADOOP_USER_NAME=hdfs hadoop fs -chown test:supergroup /user/test`  
-
+建立test目錄`HADOOP_USER_NAME=hdfs hadoop fs -mkdir /user/test`  
+修改目錄權限給帳號test`HADOOP_USER_NAME=hdfs hadoop fs -chown test:supergroup /user/test`  
+### 從Linux放檔案到HDFS上  
 `su - test`換到test使用者  
 製造檔案`echo " hello world">hello.txt`  
 放到HTFS`hadoop fs -put hello.txt /user/test/hello.txt`  
 檢查檔案是否存在`hadoop fs -ls hello.txt /user/test/hello.txt`  
 看檔案內容`hadoop fs -cat hello.txt /user/test/hello.txt`  
 --------------------------------------------------------------
+助教除錯紀錄一下  
 login as: user1
 user1@192.168.56.101's password:
 Access denied
