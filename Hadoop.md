@@ -55,8 +55,7 @@ Gateway:192.168.56.1(對應到援主機的虛擬網路卡IP位置)
 >cat /proc/sys/vm/swappiness
 >vim /etc/sysctl.conf
 
-VIM編輯器
-
+VIM編輯器指令  
 ```
 K上J下L左H右  
 O寫入新的一行  
@@ -128,10 +127,10 @@ dd把那一行刪掉，:wq存檔離開
 
 ### 修改slave的網路設定
 將eth0改成192.168.56.102/3/4  
-> su    #改用root權限，輸入密碼  
-> cd /etc/udev/rules.d  
-> rm 70-persistent-net.rules    #網路設定檔  
-> y  
+`su`  #改用root權限，輸入密碼  
+`cd /etc/udev/rules.d`  
+`rm 70-persistent-net.rules`  #網路設定檔  
+`y`  
 
 ### 改主機名稱
 分別為master1,slave1/2/3  
@@ -237,4 +236,416 @@ http://192.168.56.101/cm571/RPM-GPG-KEY-cloudera
 ```
 
 # Day3 2017/10/25
-<br />
+選七個
+HDFS  
+YARN  
+HIVE  
+IMPALA
+HUE
+Coludera Manager
+zookepper
+
+
+zookepper要四台都勾
+
+DB選Embaded
+
+
+
+service cloudera-scm-agent stop
+
+把另外三台slave的服務也關掉
+ssh root@192.168.56.102
+
+進網頁把每一個node刪掉(把clusterg刪掉？)
+
+安裝失敗的話慢慢找原因
+可能是之前的資料沒有清乾淨
+cd /dfs/nn
+ll
+有current的話
+刪掉
+rm -rf current/
+
+# 直接用QUICK START
+
+
+cloudera manager功能介紹  
+  
+
+跑`hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples.jar pi 10 100`
+YARN Applications可以看  
+Resource Manager可以看  
+
+`HADOOP_USER_NAME=hdfs spark-submit --class org.apache.spark.examples.SparkPi --master yarn --deploy-mode cluster --num-executors 3 --driver-memory 512m --executor-memory 512m /usr/lib/spark/examples/lib/spark-examples-1.6.0-cdh5.7.0-hadoop2.6.0-cdh5.7.0.jar 100`  
+  
+## 安裝順序
+HDFS YARN(impala要用的話，hue)
+
+## hue  
+有WEB UI可以進入  
+可以上傳檔案到HDFS  
+可以管理HBase和Hive，操作query  
+操作Impala，下載範例檔案  
+## HDFS
+有WEB UI可以進入  
+一個block是128MB  
+## CM Resource
+Configuration  
+可以調整給較常用的服務較高的配置  
+從Static Service Pools進入  
+Configuration內可以設定比例  
+restart  
+
+## hadoop指令
+看HDFS下有哪一些檔案  
+`hadoop fs -ls /`  
+### 增加使用者
+`sudo su`  
+看目前有哪一些使用者`hadoop fs -ls /user`  
+下這一行指令HADOOP_USER_NAME=hdfs就可以變成有權限使用者  
+建立目錄`HADOOP_USER_NAME=hdfs hadoop fs -mkdir /user/test`  
+改目錄權限`HADOOP_USER_NAME=hdfs hadoop fs -chown test:supergroup /user/test`  
+
+`su - test`換到test使用者  
+製造檔案`echo " hello world">hello.txt`  
+放到HTFS`hadoop fs -put hello.txt /user/test/hello.txt`  
+檢查檔案是否存在`hadoop fs -ls hello.txt /user/test/hello.txt`  
+看檔案內容`hadoop fs -cat hello.txt /user/test/hello.txt`  
+--------------------------------------------------------------
+login as: user1
+user1@192.168.56.101's password:
+Access denied
+user1@192.168.56.101's password:
+Access denied
+user1@192.168.56.101's password:
+Access denied
+user1@192.168.56.101's password:
+Last login: Wed Oct 18 14:14:50 2017 from 192.168.56.1
+[user1@master1 ~]$ lsof -i:7180
+[user1@master1 ~]$ su
+Password:
+[root@master1 user1]# lsof -i:7180
+COMMAND  PID         USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+java    1868 cloudera-scm  236r  IPv4  33374      0t0  TCP master1:7180.56.1:50041 (ESTABLISHED)
+java    1868 cloudera-scm  243u  IPv4  33375      0t0  TCP master1:7180.56.1:50042 (ESTABLISHED)
+java    1868 cloudera-scm  252u  IPv4  28775      0t0  TCP *:7180 (LIST
+java    1868 cloudera-scm  258u  IPv4  33376      0t0  TCP master1:7180.56.1:50043 (ESTABLISHED)
+java    1868 cloudera-scm  259u  IPv4  33377      0t0  TCP master1:7180.56.1:50044 (ESTABLISHED)
+java    1868 cloudera-scm  260u  IPv4  33378      0t0  TCP master1:7180.56.1:50045 (ESTABLISHED)
+java    1868 cloudera-scm  261u  IPv4  33379      0t0  TCP master1:7180.56.1:50046 (ESTABLISHED)
+[root@master1 user1]# yum install createrepo
+Loaded plugins: fastestmirror, refresh-packagekit, security
+Loading mirror speeds from cached hostfile
+ * base: ftp.ksu.edu.tw
+ * extras: ftp.ksu.edu.tw
+ * updates: ftp.ksu.edu.tw
+Setting up Install Process
+Package createrepo-0.9.9-27.el6_9.noarch already installed and latest version
+Nothing to do
+[root@master1 user1]# cd /etc/i
+idmapd.conf  init/        inittab      ipa/         issue
+impala/      init.d/      inputrc      iproute2/    issue.net
+[root@master1 user1]# cd /etc/init.d
+[root@master1 init.d]# ll
+total 392
+-rwxr-xr-x. 1 root root  1288 Nov 23  2013 abrt-ccpp
+-rwxr-xr-x. 1 root root  1628 Nov 23  2013 abrtd
+-rwxr-xr-x. 1 root root  1642 Nov 23  2013 abrt-oops
+-rwxr-xr-x. 1 root root  1725 Aug 19  2010 acpid
+-rwxr-xr-x. 1 root root  2062 Jan 30  2012 atd
+-rwxr-xr-x. 1 root root  3378 Jun 22  2012 auditd
+-rwxr-xr-x. 1 root root  4043 Nov 23  2013 autofs
+-r-xr-xr-x. 1 root root  1340 Nov 24  2013 blk-availability
+-rwxr-xr-x. 1 root root   710 Nov 11  2010 bluetooth
+-rwxr-xr-x. 1 root root  2094 Feb 22  2013 certmonger
+-rwxr-xr-x  1 root root  8471 May 13  2016 cloudera-scm-agent
+-rwxr-xr-x  1 root root  8319 May 13  2016 cloudera-scm-server
+-rwxr-xr-x  1 root root  4444 May 13  2016 cloudera-scm-server-db
+-rwxr-xr-x. 1 root root 11355 Aug 13  2013 cpuspeed
+-rwxr-xr-x. 1 root root  2826 Nov 23  2013 crond
+-rwxr-xr-x. 1 root root  3034 Aug 17  2013 cups
+-rwxr-xr-x. 1 root root  1702 Feb 22  2013 dnsmasq
+-rwxr-xr-x. 1 root root  3245 Jul  9  2013 firstboot
+-rw-r--r--. 1 root root 18586 Oct 10  2013 functions
+-rwxr-xr-x. 1 root root  1801 Jul 20  2011 haldaemon
+-rwxr-xr-x. 1 root root  5866 Oct 10  2013 halt
+-rwxr-xr-x  1 root root  2001 Aug 16 03:45 htcacheclean
+-rwxr-xr-x  1 root root  3488 Aug 16 03:45 httpd
+-rwxr-xr-x. 1 root root 10804 Nov 23  2013 ip6tables
+-rwxr-xr-x. 1 root root 10688 Nov 23  2013 iptables
+-rwxr-xr-x. 1 root root  1938 Aug 23  2013 irqbalance
+-rwxr-xr-x  1 root root  9972 Jan 21  2012 jexec
+-rwxr-xr-x. 1 root root 18133 Nov 23  2013 kdump
+-rwxr-xr-x. 1 root root   652 Oct 10  2013 killall
+-r-xr-xr-x. 1 root root  2134 Nov 24  2013 lvm2-lvmetad
+-r-xr-xr-x. 1 root root  2665 Nov 24  2013 lvm2-monitor
+-rwxr-xr-x. 1 root root  2571 Oct 11  2013 mdmonitor
+-rwxr-xr-x. 1 root root  2200 Sep 14  2012 messagebus
+-rwxr-xr-x. 1 root root  2989 Oct 10  2013 netconsole
+-rwxr-xr-x. 1 root root  5428 Oct 10  2013 netfs
+-rwxr-xr-x. 1 root root  6334 Oct 10  2013 network
+-rwxr-xr-x. 1 root root  2205 Nov 23  2013 NetworkManager
+-rwxr-xr-x. 1 root root  6364 Nov 22  2013 nfs
+-rwxr-xr-x. 1 root root  3526 Nov 22  2013 nfslock
+-rwxr-xr-x. 1 root root  1923 Jul 15  2013 ntpd
+-rwxr-xr-x. 1 root root  2043 Jul 15  2013 ntpdate
+-rwxr-xr-x. 1 root root  2261 Jun 25  2011 oddjobd
+-rwxr-xr-x. 1 root root  2023 Apr  3  2012 portreserve
+-rwxr-xr-x. 1 root root  3852 Dec  3  2011 postfix
+-rwxr-xr-x  1 root root  5600 Oct  6 04:32 postgresql
+-rwxr-xr-x. 1 root root  1556 Jul 17  2012 psacct
+-rwxr-xr-x. 1 root root  2034 Jun 13  2013 quota_nld
+-rwxr-xr-x. 1 root root  1513 Sep 17  2013 rdisc
+-rwxr-xr-x. 1 root root  1822 Nov 23  2013 restorecond
+-rwxr-xr-x. 1 root root  1808 Dec 18  2011 rngd
+-rwxr-xr-x. 1 root root  2073 Feb 22  2013 rpcbind
+-rwxr-xr-x. 1 root root  2518 Nov 22  2013 rpcgssd
+-rwxr-xr-x. 1 root root  2305 Nov 22  2013 rpcidmapd
+-rwxr-xr-x. 1 root root  2464 Nov 22  2013 rpcsvcgssd
+-rwxr-xr-x. 1 root root  2011 Aug 15  2013 rsyslog
+-rwxr-xr-x. 1 root root  1698 Nov 23  2013 sandbox
+-rwxr-xr-x. 1 root root  2056 Nov 20  2012 saslauthd
+-rwxr-xr-x. 1 root root   647 Oct 10  2013 single
+-rwxr-xr-x. 1 root root  3002 Feb 22  2013 smartd
+-rwxr-xr-x. 1 root root  2162 Nov 22  2013 snmpd
+-rwxr-xr-x. 1 root root  1738 Nov 22  2013 snmptrapd
+-rwxr-xr-x. 1 root root  2472 Nov 23  2013 spice-vdagentd
+-rwxr-xr-x. 1 root root  4534 Nov 23  2013 sshd
+-rwxr-xr-x. 1 root root  2712 Nov 23  2013 sssd
+-rwxr-xr-x. 1 root root  1144 Nov 23  2013 sysstat
+-rwxr-xr-x. 1 root root  2294 Nov 23  2013 udev-post
+-rwxr-xr-x. 1 root root  1674 Feb 22  2013 wdaemon
+-rwxr-xr-x. 1 root root  1608 Nov 23  2013 winbind
+-rwxr-xr-x. 1 root root  1866 Feb  4  2013 wpa_supplicant
+-rwxr-xr-x. 1 root root  4799 Feb 22  2013 ypbind
+[root@master1 init.d]# ls
+abrt-ccpp               functions     NetworkManager  rsyslog
+abrtd                   haldaemon     nfs             sandbox
+abrt-oops               halt          nfslock         saslauthd
+acpid                   htcacheclean  ntpd            single
+atd                     httpd         ntpdate         smartd
+auditd                  ip6tables     oddjobd         snmpd
+autofs                  iptables      portreserve     snmptrapd
+blk-availability        irqbalance    postfix         spice-vdagentd
+bluetooth               jexec         postgresql      sshd
+certmonger              kdump         psacct          sssd
+cloudera-scm-agent      killall       quota_nld       sysstat
+cloudera-scm-server     lvm2-lvmetad  rdisc           udev-post
+cloudera-scm-server-db  lvm2-monitor  restorecond     wdaemon
+cpuspeed                mdmonitor     rngd            winbind
+crond                   messagebus    rpcbind         wpa_supplicant
+cups                    netconsole    rpcgssd         ypbind
+dnsmasq                 netfs         rpcidmapd
+firstboot               network       rpcsvcgssd
+[root@master1 init.d]# service cloudera-scm-agent stop
+Stopping cloudera-scm-agent:                               [  OK  ]
+[root@master1 init.d]# service cloudera-scm-agent stop
+cloudera-scm-agent is already stopped
+[root@master1 init.d]# cd /dfs/
+nn/  snn/
+[root@master1 init.d]# cd /dfs/nn
+[root@master1 nn]# ll
+total 4
+drwxr-xr-x 2 hdfs hdfs 4096 Oct 25 10:59 current
+[root@master1 nn]# rm -rf current/
+[root@master1 nn]# ll
+total 0
+[root@master1 nn]# rm -rf current/
+[root@master1 nn]# ssh root@slave1
+The authenticity of host 'slave1 (192.168.56.102)' can't be established.
+RSA key fingerprint is f3:9c:1a:11:d6:6f:d1:af:25:e5:71:0e:9e:03:52:d3.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'slave1' (RSA) to the list of known hosts.
+root@slave1's password:
+Last login: Wed Oct 25 13:13:39 2017 from master1
+[root@slave1 ~]# cd /var/run/cloudera-scm-agent/
+[root@slave1 cloudera-scm-agent]# ll
+total 16
+drwxr-x--x  6 root         root         4096 Oct 18 16:34 cgroups
+-rw-r--r--  1 root         root            5 Oct 25 13:20 cloudera-scm-agent.pid
+prw-------  1 root         root            0 Oct 25 13:59 events
+drwxr-x--x  2 cloudera-scm cloudera-scm 4096 Oct 25 09:02 flood
+drwxr-x--x 29 root         root          580 Oct 25 13:58 process
+drwxr-x--x  3 root         root         4096 Oct 25 13:20 supervisor
+[root@slave1 cloudera-scm-agent]# cd process/
+[root@slave1 process]# ll
+total 0
+drwxr-x--x 3 hdfs      hdfs      380 Oct 25 13:54 100-hdfs-DATANODE
+drwxr-x--x 3 yarn      hadoop    460 Oct 25 13:57 106-yarn-NODEMANAGER
+drwxr-x--x 3 hdfs      hdfs      380 Oct 25 13:57 113-hdfs-DATANODE
+drwxr-x--x 3 hdfs      hdfs      360 Oct 25 13:59 117-hdfs-DATANODE
+drwxr-x--x 3 hdfs      hdfs      380 Oct 25 12:02 16-hdfs-DATANODE
+drwxr-x--x 3 hbase     hbase     380 Oct 25 12:01 23-hbase-REGIONSERVER
+drwxr-x--x 3 mapred    hadoop    400 Oct 25 12:02 28-mapreduce-TASKTRACKER
+drwxr-x--x 3 zookeeper zookeeper 300 Oct 25 11:27 42-zookeeper-init
+drwxr-x--x 3 zookeeper zookeeper 300 Oct 25 11:27 45-zookeeper-init
+drwxr-x--x 3 zookeeper zookeeper 300 Oct 25 11:53 50-zookeeper-server
+drwxr-x--x 3 zookeeper zookeeper 300 Oct 25 12:01 57-zookeeper-server
+drwxr-x--x 3 root      root      120 Oct 25 13:34 66-cluster-host-inspector
+drwxr-x--x 3 zookeeper zookeeper 300 Oct 25 13:37 69-zookeeper-init
+drwxr-x--x 3 zookeeper zookeeper 300 Oct 25 13:37 78-zookeeper-init
+drwxr-x--x 3 zookeeper zookeeper 280 Oct 25 13:37 81-zookeeper-server
+drwxr-x--x 3 hdfs      hdfs      380 Oct 25 13:47 92-hdfs-DATANODE
+drwxr-x--x 3 hdfs      hdfs      380 Oct 25 13:48 97-hdfs-DATANODE
+drwxr-xr-x 4 root      root      120 Oct 25 12:02 ccdeploy_hadoop-conf_etchadoopconf.cloudera.hdfs_5649848240809758678
+drwxr-xr-x 4 root      root      100 Oct 25 13:58 ccdeploy_hadoop-conf_etchadoopconf.cloudera.hdfs_7398394681881635199
+drwxr-xr-x 4 root      root      120 Oct 25 12:02 ccdeploy_hadoop-conf_etchadoopconf.cloudera.mapreduce_-2673408479045417972
+drwxr-xr-x 4 root      root      120 Oct 25 12:02 ccdeploy_hadoop-conf_etchadoopconf.cloudera.yarn_-1005083387598475902
+drwxr-xr-x 4 root      root      120 Oct 25 13:57 ccdeploy_hadoop-conf_etchadoopconf.cloudera.yarn_-6705076819038408536
+drwxr-xr-x 4 root      root      120 Oct 25 13:49 ccdeploy_hbase-conf_etchbaseconf.cloudera.hbase_-3092799128047782022
+drwxr-xr-x 4 root      root      120 Oct 25 12:01 ccdeploy_hbase-conf_etchbaseconf.cloudera.hbase_5874922965138968021
+drwxr-xr-x 4 root      root      120 Oct 25 13:49 ccdeploy_hive-conf_etchiveconf.cloudera.hive_-4774628730451574688
+drwxr-xr-x 4 root      root      120 Oct 25 12:01 ccdeploy_hive-conf_etchiveconf.cloudera.hive_-6548534624731457338
+drwxr-xr-x 7 root      root      180 Oct 25 13:49 ccdeploy_spark-conf_etcsparkconf.cloudera.spark_on_yarn_-8068810184727660673
+[root@slave1 process]# cd 117-hdfs-DATANODE/
+[root@slave1 117-hdfs-DATANODE]# ll
+total 48
+-rw-r----- 1 hdfs hdfs  372 Oct 25 13:59 cloudera-monitor.properties
+-rw-r----- 1 hdfs hdfs  319 Oct 25 13:59 cloudera-stack-monitor.propert
+-rw-r----- 1 hdfs hdfs 3254 Oct 25 13:59 core-site.xml
+-rw-r----- 1 hdfs hdfs 1511 Oct 25 13:59 event-filter-rules.json
+-rw-r----- 1 hdfs hdfs    0 Oct 25 13:59 hadoop-metrics2.properties
+-rw-r----- 1 hdfs hdfs   98 Oct 25 13:59 hadoop-policy.xml
+-rw------- 1 hdfs hdfs    0 Oct 25 13:58 hdfs.keytab
+-rw-r----- 1 hdfs hdfs  214 Oct 25 13:59 hdfs-site-refreshable.xml
+-rw-r----- 1 hdfs hdfs 4219 Oct 25 13:59 hdfs-site.xml
+-rw-r----- 1 hdfs hdfs    0 Oct 25 13:59 http-auth-signature-secret
+-rw-r----- 1 hdfs hdfs 3182 Oct 25 13:59 log4j.properties
+drwxr-x--x 2 hdfs hdfs   80 Oct 25 13:58 logs
+-rw-r----- 1 hdfs hdfs    0 Oct 25 13:59 redaction-rules.json
+-rw-r----- 1 hdfs hdfs  315 Oct 25 13:59 ssl-client.xml
+-rw-r----- 1 hdfs hdfs   98 Oct 25 13:59 ssl-server.xml
+-rw------- 1 root root 3148 Oct 25 13:58 supervisor.conf
+[root@slave1 117-hdfs-DATANODE]# chown hdfs:hdfs supervisor.conf
+[root@slave1 117-hdfs-DATANODE]# ll
+total 52
+-rw-r----- 1 hdfs hdfs  372 Oct 25 13:59 cloudera-monitor.properties
+-rw-r----- 1 hdfs hdfs  319 Oct 25 13:59 cloudera-stack-monitor.propert
+-rw-r----- 1 hdfs hdfs 3254 Oct 25 13:59 core-site.xml
+-rw-r----- 1 hdfs hdfs 1511 Oct 25 13:59 event-filter-rules.json
+-rw-r----- 1 hdfs hdfs    0 Oct 25 13:59 hadoop-metrics2.properties
+-rw-r----- 1 hdfs hdfs   98 Oct 25 13:59 hadoop-policy.xml
+-rw------- 1 hdfs hdfs    0 Oct 25 13:58 hdfs.keytab
+-rw-r----- 1 hdfs hdfs  214 Oct 25 13:59 hdfs-site-refreshable.xml
+-rw-r----- 1 hdfs hdfs 4219 Oct 25 13:59 hdfs-site.xml
+-rw-r----- 1 hdfs hdfs    0 Oct 25 13:59 http-auth-signature-secret
+-rw-r----- 1 hdfs hdfs 3182 Oct 25 13:59 log4j.properties
+drwxr-x--x 2 hdfs hdfs   80 Oct 25 13:58 logs
+-rw-r--r-- 1 root root   13 Oct 25 14:01 process_timestamp
+-rw-r----- 1 hdfs hdfs    0 Oct 25 13:59 redaction-rules.json
+-rw-r----- 1 hdfs hdfs  315 Oct 25 13:59 ssl-client.xml
+-rw-r----- 1 hdfs hdfs   98 Oct 25 13:59 ssl-server.xml
+-rw------- 1 hdfs hdfs 3148 Oct 25 13:58 supervisor.conf
+[root@slave1 117-hdfs-DATANODE]# vim supervisor.conf
+[root@slave1 117-hdfs-DATANODE]# setup
+[root@slave1 117-hdfs-DATANODE]# exit
+logout
+Connection to slave1 closed.
+[root@master1 nn]# setup
+[root@master1 nn]# cd /var/log/h
+hadoop-0.20-mapreduce/ hadoop-mapreduce/      hive/
+hadoop-hdfs/           hbase/                 httpd/
+[root@master1 nn]# cd /var/log/hadoop-hdfs/
+hadoop-cmf-hdfs-NAMENODE-master1.log.out           SecurityAuth-hdfs.au
+hadoop-cmf-hdfs-SECONDARYNAMENODE-master1.log.out  stacks/
+hdfs-audit.log
+[root@master1 nn]# cd /var/log/hadoop-hdfs/
+[root@master1 hadoop-hdfs]# ll
+total 1756
+-rw-r--r-- 1 hdfs hdfs 911206 Oct 25 14:08 hadoop-cmf-hdfs-NAMENODE-mas
+-rw-r--r-- 1 hdfs hdfs 268375 Oct 25 14:07 hadoop-cmf-hdfs-SECONDARYNAM
+-rw-r--r-- 1 hdfs hdfs 601620 Oct 25 14:08 hdfs-audit.log
+-rw-r--r-- 1 hdfs hdfs      0 Oct 18 17:28 SecurityAuth-hdfs.audit
+drwxr-xr-x 2 hdfs hdfs   4096 Oct 18 17:28 stacks
+[root@master1 hadoop-hdfs]# ssh root@slave1
+root@slave1's password:
+Last login: Wed Oct 25 14:00:08 2017 from master1
+[root@slave1 ~]# cd /var/log/hadoop-hdfs/
+[root@slave1 hadoop-hdfs]# ll
+total 1180
+-rw-r--r-- 1 hdfs hdfs 1198141 Oct 25 14:05 hadoop-cmf-hdfs-DATANODE-sl
+-rw-r--r-- 1 hdfs hdfs       0 Oct 18 17:28 hdfs-audit.log
+-rw-r--r-- 1 hdfs hdfs       0 Oct 18 17:28 SecurityAuth-hdfs.audit
+drwxr-xr-x 2 hdfs hdfs    4096 Oct 18 17:28 stacks
+[root@slave1 hadoop-hdfs]# vim hadoop-cmf-hdfs-DATANODE-slave1.log.out
+
+[1]+  Stopped                 vim hadoop-cmf-hdfs-DATANODE-slave1.log.o
+[root@slave1 hadoop-hdfs]# cd /dfs/
+[root@slave1 dfs]# l
+-bash: l: command not found
+[root@slave1 dfs]# ll
+total 4
+drwx------ 3 hdfs hadoop 4096 Oct 25 14:05 dn
+[root@slave1 dfs]# cd dn/
+[root@slave1 dn]# ll
+total 4
+drwxr-xr-x 3 hdfs hdfs 4096 Oct 18 17:28 current
+[root@slave1 dn]# rm -rf current/
+[root@slave1 dn]# ssh root@slave2ll
+ssh: Could not resolve hostname slave2ll: Name or service not known
+[root@slave1 dn]# ll
+total 0
+[root@slave1 dn]# ssh root@slave2
+The authenticity of host 'slave2 (192.168.56.103)' can't be established
+RSA key fingerprint is f3:9c:1a:11:d6:6f:d1:af:25:e5:71:0e:9e:03:52:d3.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'slave2,192.168.56.103' (RSA) to the list of
+root@slave2's password:
+Last login: Wed Oct 25 13:13:39 2017 from master1
+[root@slave2 ~]# cd /dfs/dn
+[root@slave2 dn]# ll
+total 4
+drwxr-xr-x 3 hdfs hdfs 4096 Oct 18 17:28 current
+[root@slave2 dn]# rm -rf current/
+[root@slave2 dn]# ll
+total 0
+[root@slave2 dn]# ssh root@slave3
+The authenticity of host 'slave3 (192.168.56.104)' can't be established
+RSA key fingerprint is f3:9c:1a:11:d6:6f:d1:af:25:e5:71:0e:9e:03:52:d3.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'slave3,192.168.56.104' (RSA) to the list of
+root@slave3's password:
+Last login: Wed Oct 25 13:13:39 2017 from master1
+[root@slave3 ~]# cd /dfs/dn
+[root@slave3 dn]# ll
+total 4
+drwxr-xr-x 3 hdfs hdfs 4096 Oct 18 17:28 current
+[root@slave3 dn]# rm -rf current/
+[root@slave3 dn]# exi
+-bash: exi: command not found
+[root@slave3 dn]# exit
+logout
+Connection to slave3 closed.
+[root@slave2 dn]# exit
+logout
+Connection to slave2 closed.
+[root@slave1 dn]# exit
+logout
+There are stopped jobs.
+[root@slave1 dn]# exit
+logout
+Vim: Caught deadly signal TERM
+Vim: preserving files...
+Connection to slave1 closed.
+[root@master1 hadoop-hdfs]# cd /dfs/nn
+[root@master1 nn]# ll
+total 8
+drwxr-xr-x 2 hdfs hdfs 4096 Oct 25 14:11 current
+-rw-r--r-- 1 hdfs hdfs   13 Oct 25 14:04 in_use.lock
+[root@master1 nn]# ll
+total 4
+drwxr-xr-x 2 hdfs hdfs 4096 Oct 25 14:11 current
+[root@master1 nn]# rm -rf current/
+[root@master1 nn]# cd ../
+[root@master1 dfs]# ll
+total 8
+drwx------ 2 hdfs hadoop 4096 Oct 25 14:12 nn
+drwx------ 3 hdfs hadoop 4096 Oct 25 14:11 snn
+[root@master1 dfs]# cd snn
+[root@master1 snn]# ll
+total 4
+drwxr-xr-x 2 hdfs hdfs 4096 Oct 25 10:59 current
+[root@master1 snn]# rm -rf current/
+[root@master1 snn]# ll
+total 0

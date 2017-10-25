@@ -1,0 +1,5 @@
+檢查平台是否正常運作:
+1.蒙特卡羅(Yarn)
+hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples.jar pi 10 100
+2.蒙特卡羅(Spark)
+HADOOP_USER_NAME=hdfs spark-submit --class org.apache.spark.examples.SparkPi --master yarn --deploy-mode cluster --num-executors 3 --driver-memory 512m --executor-memory 512m /usr/lib/spark/examples/lib/spark-examples-1.6.0-cdh5.7.0-hadoop2.6.0-cdh5.7.0.jar 100
