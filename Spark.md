@@ -61,7 +61,7 @@ Spark的進入點<br />
 ```
 :help
 :pa
-:sh  在spark-shell內執行Linux指令，有回傳值會變成RDD，使用rm和mkdir就好，其他還是退出或另外開一個Termal  
+:sh  在spark-shell內執行Linux指令，有回傳值會變成RDD，使用rm和mkdir就好，其只指令還是退出再執行或另外開一個Termal  
 :q
 ```
 
