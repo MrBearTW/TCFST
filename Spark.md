@@ -134,8 +134,6 @@ Ex02-03加入路徑
 
 
 # Day2 下午
-
-
 確認有 init.sh三個檔案  
 
 `bash init.sh`  
@@ -191,11 +189,10 @@ object HelloWorld {
 ```
 #### 確認sparkhome有建好  
 `echo $SPARK_HOME`  
-
-#### 丟到spark執行  
+  
+#### 丟到spark執行
 `spark-submit --class HelloWorld --master local[*] ./target/scala-2.11/helloworld_2.11-0.1.jar`  
-
-
+  
 ## 製造jar檔方法二
 用root執行以下  
 `su`  
@@ -221,6 +218,10 @@ object HelloWorld {
 ### Accumulators
 做EX02-05  
 ### 廣播變數
+  
+# Day3 2017/10/27
+
+
 <br />
 <br />
 <br />
