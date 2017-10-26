@@ -1,0 +1,67 @@
+package hbasetest;
+
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.HColumnDescriptor;
+import org.apache.hadoop.hbase.HTableDescriptor;
+import org.apache.hadoop.hbase.TableName;
+import org.apache.hadoop.hbase.client.Connection;
+import org.apache.hadoop.hbase.client.ConnectionFactory;
+import org.apache.hadoop.hbase.client.HBaseAdmin;
+
+public class HBaseOperator {
+	private static Connection conn = null;
+	static{
+		Configuration conf = HBaseConfiguration.create();
+		conf.addResource("./resource/cour-site.xml");
+		conf.addResource("./resource/hbase-site.xml");
+		conf.addResource("./resource/hdfs-site.xml");
+		
+		try {
+			conn = ConnectionFactory.createConnection(conf);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void createTable(String tableName, String columnFamily) {
+
+		// TODO Auto-generated method stub
+		try {
+			HBaseAdmin admin = (HBaseAdmin)conn.getAdmin();
+			if(admin.tableExists(tableName)){
+				
+			}
+			else{
+				HTableDescriptor tableDesc = new HTableDescriptor(TableName.valueOf(tableName));
+				HColumnDescriptor family = new HColumnDescriptor(columnFamily);
+				tableDesc.addFamily(family);
+				
+				admin.createTable(tableDesc);
+				admin.close();
+				}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+
+package hbasetest;
+
+public class Main {
+
+	public static void main(String[] args) {
+		String columnFamily = "cf";
+		String tableName = "mos";
+		// TODO Auto-generated method stub
+		HBaseOperator.createTable(tableName,columnFamily);
+	}
+
+}
