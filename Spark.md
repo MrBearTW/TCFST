@@ -134,6 +134,7 @@ Ex02-03加入路徑
 
 
 # Day2 下午
+## 安裝 IntelliJ
 確認有 init.sh三個檔案  
 
 `bash init.sh`  
@@ -215,14 +216,126 @@ object HelloWorld {
 最好是一顆CPU對應一顆DISK  
 ### Shared Variables
 做EX02-04  
-### Accumulators
+### Accumulators累加器
+錯誤也會被記錄下來，可能會判讀錯誤  
 做EX02-05  
 ### 廣播變數
+做EX02-07
+
+
   
 # Day3 2017/10/27
 
+### 看一下flights.csv這個檔案
+`cd training/test-02/`  
+` head -n 5 flights.csv | tail -n +2`  
+### 執行test-02.scala
+到tanining資料夾執行  
+進`spark-shell`  
+`:pa test-02/test-02.scala`  
+退出shell  
+移動到`cd /training/test-02/output/`  
+看輸出結果`cat part-00000`  
+  
+# SPARK SQL
+## DataFrame
+DataFrame是Dataset的一個子集合  
+  
+### 安裝Postgresql
+`su`  
+格式問題  
+`vi init-db.sh`  
+複製一份  
+  
+`vi init-db2.sh`  
+貼上，就會改成LINUX格式  
+執行`bash init-db2.sh`  
+進入PostgreSQL`psql`  
+退出`\q`  
 
-<br />
-<br />
+## ????
+  
+執行`flights.select("dOfW" + 1).distinct().show()`會出現錯誤  
+這樣才可以`flights.select($"dOfW" + 1).distinct().show()`  
+任何一個欄位有加$的話，全部都要加$  
+  
+#### 字串相加conacted
+`flights.select( concat($"carrier",$"tailNum").alias("UniCarrier")).distinct().show()`  
+  
+要加一個-在中間的話要用 lit("-")  
+`flights.select( concat($"carrier", lit("-"), $"tailNum").alias("UniCarrier") ).distinct().show()`  
+
+#### 做過濾
+不等於有兩個 ==  
+等於有三個 ===  
+`flights.filter($"dOfW" < 2).distinct().show()`  
+`flights.filter($"dOfW" > 2).distinct().show()`  
+`flights.filter($"dOfW" !== 2).distinct().show()`  
+`flights.filter($"dOfW" === 2).distinct().show()`  
+
+### group
+`flights.groupBy("dOfM" , "dOfW").count().show()`  
+  
+### agg  aggregations
+可以一次算很多個平均數，不用分開算再join在一起  
+`flights.groupBy("dOfM").agg(avg($"DepDelayMins").alias("DepDelay"),avg("CRSElapsedTime").alias("CrsDelay")).show()`  
+  
+## 做SQL-02
+  
+## User defined functions (UDF)
+  
+## 改成DataFram 寫法
+將 test-02 改成 DateFrame => test-04  
+  
+## 直接寫SQL 語法
+將 test-04 改成 SQL => test-05  
+  
+## PPART4 PT36
+DataFram像是一個Table  
+Datasets會強制給型態轉型
+強型態：執行之前必須指定型態
+
+## 安裝JDBC
+先確定Postgresql有安裝好  
+留一個Spark-Shell就好  
+進入shell with JDBC`spark-shell --driver-class-path db/postgresql-42.1.1.jar`  
+  
+因為退出過shell
+`:pa Example/SQL-04.scala`  
+`:pa Example/SQL-08a.scala`  
+`:pa Example/SQL-07.scala`  
+------------------------------------------
+`cd /var/lib/pgsql/10/data`
+`vi pg_hba.conf`
+
+正確版的應該長這樣`vi /home/user/training/db/pg_hba.conf`
+
+`cp /home/user/training/db/pg_hba.conf .`
+------------------------------------------
+
+## 增加資料
+用mode  
+.mode(“append”)  
+  
+
+## Overwrite
+小心使用  
+資料砍掉，整個drop  
+
+
+
+
+
+
+
+
+## MLLib
+
+用IntelliJ開啟OPEN  
+找到那一個檔案  
+在sbt-shell內`package`  
+  
+在Termal執行做出來的jar檔案`bash t1.sh 1`  
+
 <br />
 <br />
