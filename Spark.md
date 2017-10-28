@@ -321,6 +321,7 @@ Datasets會強制給型態轉型
 ## Overwrite
 小心使用  
 資料砍掉，整個drop  
+大公司應該是不可能下這個指令
 
 
 
@@ -333,9 +334,15 @@ Datasets會強制給型態轉型
 
 用IntelliJ開啟OPEN  
 找到那一個檔案  
-在sbt-shell內`package`  
+在IntelliJ的sbt-shell內`package`製作jar檔案  
   
 在Termal執行做出來的jar檔案`bash t1.sh 1`  
+  
+### 減少SPARK回復的資訊
+修改log4j.properties檔案  
+`cd /usr/local/spark-2.2.0-bin-hadoop2.7/conf/`
+`log4j.properties`
+
 
 <br />
 <br />
