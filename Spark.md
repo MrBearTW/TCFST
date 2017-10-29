@@ -344,9 +344,11 @@ Datasets會強制給型態轉型
 改變權限`chown -R user:user spark-2.2.0-bin-hadoop2.7`  
 確認spark-2.2.0-bin-hadoop2.7的權限變成user:user
 修改log4j.properties檔案  
-`cd /usr/local/spark-2.2.0-bin-hadoop2.7/conf/`
+變到資料夾`cd /usr/local/spark-2.2.0-bin-hadoop2.7/conf/`
+複製一份`cp log4j.properties.template log4j.properties` 
+修改`vi log4j.properties`  
 把`log4j.properties`內沒有被註解的一行```INFO```改成```ERROR```
-
+之後出現的資訊就會減少。
 
 <br />
 <br />
