@@ -339,9 +339,13 @@ Datasets會強制給型態轉型
 在Termal執行做出來的jar檔案`bash t1.sh 1`  
   
 ### 減少SPARK回復的資訊
+先看一下saprk權限`ll /usr/local`  
+切換成root`su`
+改變權限`chown -R user:user spark-2.2.0-bin-hadoop2.7`  
+確認spark-2.2.0-bin-hadoop2.7的權限變成user:user
 修改log4j.properties檔案  
 `cd /usr/local/spark-2.2.0-bin-hadoop2.7/conf/`
-`log4j.properties`
+把`log4j.properties`內沒有被註解的一行```INFO```改成```ERROR```
 
 
 <br />
