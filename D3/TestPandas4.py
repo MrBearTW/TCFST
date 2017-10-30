@@ -5,7 +5,7 @@ df = pd.read_csv('data.csv',names=['name','age'],skipinitialspace=True)
 #print(df)
 
 df.to_csv('data_new.csv',encoding='UTF-8')
-'''data_new.csv
+'''data_new.csv長成下面那樣
 ,name,age
 0,AAA,55
 1,BBB,66
