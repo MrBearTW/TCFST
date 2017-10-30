@@ -1,5 +1,17 @@
 import pandas as pd
 df = pd.read_json('sample.json')
+'''
+[{
+    "name": "apple",
+    "age": "18"
+},{
+    "name": "pen",
+    "age": "55"
+},{
+    "name": "bananan",
+    "age": "66"
+}]
+'''
 
 df.to_json('sample_records.json', orient='records')
 # [{"age":18,"name":"apple"},{"age":55,"name":"pen"},{"age":66,"name":"bananan"}]
