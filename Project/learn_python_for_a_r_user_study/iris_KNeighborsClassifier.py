@@ -7,6 +7,9 @@ from sklearn import metrics
 iris = load_iris()
 iris_X = iris.data
 iris_y = iris.target
+# http://scikit-learn.org/stable/datasets/index.html#datasets
+
+#print(iris)
 
 # 切分訓練與測試資料
 train_X, test_X, train_y, test_y = train_test_split(iris_X, iris_y, test_size = 0.3)
@@ -17,7 +20,7 @@ iris_clf = clf.fit(train_X, train_y)
 
 # 預測
 test_y_predicted = iris_clf.predict(test_X)
-print(test_y_predicted)
+#print(test_y_predicted)
 
 # 標準答案
-print(test_y)
+#print(test_y)
