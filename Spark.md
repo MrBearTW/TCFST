@@ -35,21 +35,34 @@ LICENSE ACCEPTED<br />
 192.168.56.101(內網虛擬主機和WIN Host主機連線用)
 10.0.2.15(給虛擬主機連外網)
 ```
+可能用的到的指令  
+看一下Gateway`route -n`   
+強迫設一個Gateway`sudo ;route add default gw 192.168.171.1`  
+  
+## 跑JAVA更新  
+`yum install -y java-1.8.0-openjdk-devel`
+
 ### 改設定檔案新增幾行在/.bashrc最下面
-進入編輯<br />
->vi ~/.bashrc
+進入編輯`vi ~/.bashrc`  
 ```
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0
 export PATH=$PATH:$JAVA_HOME/bin
 export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar
 ```
+改完之後重新整理一次`source ~/.bashrc`    
 
-跑JAVA更新<br />
->yum install -y java-1.8.0-openjdk-devel
-
-SparkContext<br />
-Spark的進入點<br />
-2.0之後進入點可以<br />
+## 安裝SPARK
+`su`  
+`cd Downloads/`
+`ll`確定一下有spark-2.2.0-bin-hadoop2.7.tgz這個檔案
+`tar zxvf spark-2.2.0-bin-hadoop2.7.tgz -O /usr/local`  
+`exit`  
+進入編輯`vi ~/.bashrc`
+改完之後系統重新讀參數`source ~/.bashrc`
+  
+SparkContext  
+Spark的進入點  
+2.0之後進入點可以  
 
 ## 進入Spark-shell
 進入Scala  
