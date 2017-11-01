@@ -100,13 +100,160 @@ val可重新定義<br />
 S""：會帶入後面的參數
 raw：太生了
 ```
+### 試跑幾段Scala code
+```
+val textFile = sc.textFile("/usr/local/spark-2.2.0-bin-hadoop2.7/README.md")
+val counts = textFile.flatMap(line => line.split(" "))
+.map(word => (word, 1))
+.reduceByKey(_ + _)
+counts.saveAsTextFile("wordcount")
+```
+跑為後會在目錄下出現一個wordcount，內有兩個檔案  
+可以在Shell內下指令刪掉資料夾`:sh rm -rf wordcount`  
+### 用 :pa 方式載入寫好的scala檔案執行
+`:pa 要執行的檔案位置和名稱`  
+crtl+D結束  
 
 # Part2 RDDs操作
-RDDs<br />
-
-
-
-
+Resilient Distributed Datasets (RDDs)彈性分散式數據集  
+immutable(不變的) and distributed(分散式的)  
+Lazy evaluation  
+# Basic RDDs
+## Transformations
+• map  
+• flatMap  
+• filter  
+• distinct  
+• union  
+## Actions
+• collect  
+• count  
+• foreach  
+• first  
+• take  
+• saveAsTextFile  
+  
+## Transformation實作
+• map  
+每個人都加一分  
+`val input = sc.parallelize(Array(1,2,3,3,6))`  
+`val newRDD = input.map(x=>x+1)`  
+`newRDD foreach println`   
+• flatMap  
+範例1 README.md 讀近來後，每一行再依空白來分 wrod  
+`sc.parallelize(Array("2#3","4#5","3#4"))`  
+`input.flatMap(x=>x.split("#"))`  
+`newRDD foreach println`  
+  
+範例2 用" "計算字數  
+`val input = sc.textFile("/usr/local/spark-2.2.0-bin-hadoop2.7/README.md")`  
+`val wordCounts = input.flatMap(line => line.split(" ")).map( x=>(x,1)).reduceByKey((a, b) => a + b)`  
+`wordCounts.collect()`  
+• filter  
+找出>2的  
+`val input = sc.parallelize(Array(1,2,3,3,6))`  
+`val newRDD = input.filter(x=> x>2)`  
+`newRDD foreach println`  
+• union  
+做聯集  
+範例1
+`val rdd1 = sc.parallelize(Array(1,2,3))`  
+`val rdd2 = sc.parallelize(Array(2,4))`  
+`val newRDD = rdd1.union(rdd2)`  
+`newRDD foreach println`  
+範例2
+`val input = sc.textFile("/usr/local/spark-2.2.0-bin-hadoop2.7/README.md")`  
+`val rdd1 = input.filter(line => line.contains("spark"))`  
+`val rdd2 = input.filter(line => line.contains("Python"))`  
+`rdd1.count()` 13  
+`rdd2.count()` 12    
+`newRDD.count()` 16  
+• distinct  
+找出不同的值
+`val input = sc.parallelize(Array(1,2,3,3,6))`  
+`val newRDD = input.distinct()`  
+`newRDD foreach println`  
+• reduce  
+聚集，透過一個方法降低資料量
+`val input = sc.parallelize(Array(1,2,3,4))`  
+`val newRDD = input.reduce( (x,y) => x+y )`  
+`newRDD`  10
+  
+## Action 真的有動
+給一組資料`val input = sc.parallelize(Array(1,2,3,3,6))`  
+• collect  
+回傳所有的值  
+`input.collect()`  
+• count  
+回傳有多少個值  
+`input.count()`  
+• foreach  
+對所有元素執行給的function  
+`input.foreach(x=> println(x))`  
+• first  
+回傳第一個值  
+`input.first()`  
+• take  
+回傳前3個值
+`input.take(3)`  
+• saveAsTextFile  
+輸出成一個檔案  
+`input.saveAsTextFile("output")`  
+  
+# Key-Value Pair RDDs
+## Transformations
+• reduceByKey  
+• groupByKey  
+• mapValues  
+• flatMapValues  
+• join  
+## Actions
+• countByKey  
+• collectAsMap  
+• lookup(key)  
+  
+## Transformations實作
+• reduceByKey  
+``  
+``  
+``  
+``  
+``  
+• groupByKey  
+依照Key合併
+`val input = sc.parallelize(Seq(("A",1),("B",2),("C",3),("C",4)))`  
+`val newRDD = input.groupByKey()`  
+`newRDD foreach println`  
+• mapValues  
+`val input = sc.parallelize(Seq(("A",1),("B",1),("C",1),("C",1)))`  
+`val newRDD = input.mapValues(x => x + 1)`  
+`newRDD foreach println`  
+• flatMapValues  
+``  
+``  
+``  
+``  
+• join  
+``  
+``  
+``  
+``  
+## Actions
+• countByKey  
+``  
+``  
+``  
+``  
+• collectAsMap  
+``  
+``  
+``  
+``  
+• lookup(key)  
+``  
+``  
+``  
+``  
 
 
 
