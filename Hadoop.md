@@ -271,9 +271,10 @@ Spark
 YARN(取代MapReduce)
 Zookepper
 ```
-Zookepper勾三台主機(要奇數台)(slave3不勾)
-補充：基礎HDFS和YAARN和Zookepper一定要先裝。盡量先IMPALA再HUE。
-
+Zookepper勾三台主機(要奇數台)(slave3不勾)  
+補充：基礎HDFS和YAARN和Zookepper一定要先裝。盡量先IMPALA再HUE。  
+安裝順序參考HIVE>>Impala>>Oozie>>
+    
 ### 選擇要安裝的RDB
 選Use Embedded Database  
 右下Test Connection  
@@ -293,7 +294,7 @@ Zookepper勾三台主機(要奇數台)(slave3不勾)
 進網頁把每一個node刪掉(把clusterg刪掉？)
 重跑一次  
   
-### 助教大致流程
+### 助教除錯大致流程
 還是失敗的話要慢慢找原因  
 可能是之前的資料沒有清乾淨  
 master主機用root帳號
@@ -367,6 +368,10 @@ restart
 放到HTFS`hadoop fs -put hello.txt /user/test/hello.txt`  
 檢查檔案是否存在`hadoop fs -ls hello.txt /user/test/hello.txt`  
 看檔案內容`hadoop fs -cat hello.txt /user/test/hello.txt`  
+
+# DAY4 2017/11/1
+資料量大用HINE
+資料量小可以用IMPALA
 --------------------------------------------------------------
 助教除錯紀錄一下  
 login as: user1

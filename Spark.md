@@ -53,22 +53,34 @@ export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar
 
 ## 安裝SPARK
 `su`  
-`cd Downloads/`
-`ll`確定一下有spark-2.2.0-bin-hadoop2.7.tgz這個檔案
-`tar zxvf spark-2.2.0-bin-hadoop2.7.tgz -O /usr/local`  
+方法1  
+`cd Downloads/`  
+`ll`確定一下有spark-2.2.0-bin-hadoop2.7.tgz這個檔案  
+移到檔案在的資料夾解壓縮過去目的地`tar zxvf spark-2.2.0-bin-hadoop2.7.tgz -O /usr/local` 
+  
+方法2  
+移到目的地`cd /usr/local`  
+從解壓縮檔案在的位置解壓縮回來`tar zxvf /home/user1/Downloads/spark-2.2.0-bin-hadoop2.7.tgz`  
+  
 `exit`  
 進入編輯`vi ~/.bashrc`
+再新增在最下面  
+```
+export SPARK_HOME=/usr/local/spark-2.2.0-bin-hadoop2.7
+export PATH=$PATH:$SPARK_HOME/bin
+```
 改完之後系統重新讀參數`source ~/.bashrc`
   
 SparkContext  
 Spark的進入點  
 2.0之後進入點可以  
-
+  
 ## 進入Spark-shell
 進入Scala  
 `spark-shell`
 進入pyspark  
 `pyspark`
+開啟Shell後可以看到WEB介面```localhost:4040```
 
 ## Spark-shell指令
 ```
