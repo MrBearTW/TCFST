@@ -168,7 +168,7 @@ ping名稱看個主機間網路通不通
 ### 複製cdh571,cm571進入master1主機
 使用WINSCP，用root帳號連線到master主機
 把兩個資料夾cdh571,cm571複製到master內的/var/www/html  
-不改資料夾名字  
+不改資料夾名字不改資料夾名字不改資料夾名字  
 `cd /var/www/html/`  
   
 ### 先安裝createrepo
@@ -273,7 +273,8 @@ Zookepper
 ```
 Zookepper勾三台主機(要奇數台)(slave3不勾)  
 補充：基礎HDFS和YAARN和Zookepper一定要先裝。盡量先IMPALA再HUE。  
-安裝順序參考HIVE>>Impala>>Oozie>>
+Add Service時都會提醒要先安裝什麼  
+安裝順序參考HIVE>>Impala>>Oozie>>HUE  
     
 ### 選擇要安裝的RDB
 選Use Embedded Database  
@@ -329,12 +330,13 @@ cloudera manager功能介紹
 `sudo /home/cloudera/cloudera-manager --force  --express`  
   
 ## 看跑範例程式後YARN上面的資料 
-跑`hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples.jar pi 10 100`  
+QUICK START跑`hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples.jar pi 10 100`  
+自己裝的Cluster的沒有裝Mapreduce應該是沒有這個範例檔可以執行...  
 YARN Applications可以看  
 Resource Manager可以看
 ## 跑SPARK範例程  
 `HADOOP_USER_NAME=hdfs spark-submit --class org.apache.spark.examples.SparkPi --master yarn --deploy-mode cluster --num-executors 3 --driver-memory 512m --executor-memory 512m /usr/lib/spark/examples/lib/spark-examples-1.6.0-cdh5.7.0-hadoop2.6.0-cdh5.7.0.jar 100`  
-可以看SPARK和YARN等相關的資訊
+可以看SPARK和YARN等相關的資訊  
   
 ## hue  
 有WEB UI可以進入  
@@ -370,8 +372,61 @@ restart
 看檔案內容`hadoop fs -cat hello.txt /user/test/hello.txt`  
 
 # DAY4 2017/11/1
-資料量大用HINE
-資料量小可以用IMPALA
+資料量大用HIVE  
+資料量小可以用IMPALA  
+# Hadoop管理
+
+## 新增一個node
+/etc/hosts設定、time zones、Java版本...等  
+可以選擇已有的範本或是新建一個範本  
+增加datanode與namenode  
+## 刪除一個node
+需先將Hosts裡的Role Group移除，使用decommission  
+### 使用Decommission注意事項???????????????????????????????????
+調整node數量?????????????????????????????????????????????????
+
+進要停掉的主機root權限`su`  
+確認一下cloudera狀態`service cloudera-scm-agent status`  
+`service cloudera-scm-agent stop`  
+
+Host若無法與Cloudera Manager溝通則不能使用  
+需個別停止host內的services  
+Host需先Recommission才能啟動role instance  
+### Role Groups移除後，移除Host分兩種方式
+1.Delete  
+2.Remove From Cluster  
+#### Delete
+刪除後在叢集內看不到Host  
+
+
+
+## 透過impala操作SQL指令  
+https://www.cloudera.com/documentation/enterprise/5-8-x/topics/impala_create_table.html  
+## 升級Cloudera Manager
+進入Parcels
+1.Host下拉選單  
+2.右上方 禮物圖案進入  
+configuation進入Parcel Settings  
+若是企業封閉網路，路徑會是內網新版檔案放置的主機路徑  
+### 事前確認事項
+Cluster沒有Job在running  
+Cluster沒有Error  
+進入維護模式(讓警告訊息在升級時不出現)  
+### 5.0升級5.2
+停止Cluster  
+備份namenode資料  
+下載CDH5.2.0，不要Restart  
+進入HDFS頁面，升級HDFS Metadata  
+進入Hive頁面，升級Hive的Metastore  
+進入Ooize頁面，啟動Ooize並安裝ShareLib  
+進入Sqoop2頁面，升級Sqoop  
+#### 部署客戶端設定檔  
+讓client user可以使用Services  
+  
+在HDFS Service下的namenode role  
+Finalize Metadata，移除前一版本的metadata  
+
+
 --------------------------------------------------------------
 助教除錯紀錄一下  
 login as: user1
