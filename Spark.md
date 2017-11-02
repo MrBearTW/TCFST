@@ -119,19 +119,15 @@ Resilient Distributed Datasets (RDDs)彈性分散式數據集
 immutable(不變的) and distributed(分散式的)  
 Lazy evaluation  
 # Basic RDDs
-## Transformations
-• map  
-• flatMap  
-• filter  
-• distinct  
-• union  
-## Actions
-• collect  
-• count  
-• foreach  
-• first  
-• take  
-• saveAsTextFile  
+|Transformations|Actions|
+|:---:|--|
+|map|collect|
+|flatMap|count|
+|filter|foreach|
+|distinct|first|
+|union|take|
+||saveAsTextFile|
+
   
 ## Transformation實作
 • map  
@@ -201,17 +197,14 @@ Lazy evaluation
 `input.saveAsTextFile("output")`  
   
 # Key-Value Pair RDDs
-## Transformations
-• reduceByKey  
-• groupByKey  
-• mapValues  
-• flatMapValues  
-• join  
-## Actions
-• countByKey  
-• collectAsMap  
-• lookup(key)  
-  
+|Transformations|Actions|
+|:---:|--|
+|reduceByKey|countByKey|
+|groupByKey|collectAsMap|
+|mapValues|lookup(key)|
+|flatMapValues||
+|join||
+
 ## Transformations實作
 • reduceByKey  
 ``  
@@ -281,7 +274,7 @@ tuple最多到22個
 ## 操做test-01.scala
 在test01資料夾中  
 看這個檔案的頭五行  
-`head -n 5 t1.log head -n 5 t1.log`  
+`head -n 5 t1.log`  
 計算t1.log有幾行  
 `wc -l t1.log`  
 在tarining資料夾內，進到sparkshell  
@@ -380,10 +373,10 @@ object HelloWorld {
 把intellJ製造的那一個檔案  
 `rm target/scala-2.11/helloworld_2.11-0.1.jar`  
 製造jar檔案  
-`sbt compile package`
-
+`sbt compile package`  
+  
 ## 回到part3 ppt33頁
-
+  
 ### SPARK RDDs partition
 最好是一顆CPU對應一顆DISK  
 ### Shared Variables
@@ -392,8 +385,8 @@ object HelloWorld {
 錯誤也會被記錄下來，可能會判讀錯誤  
 做EX02-05  
 ### 廣播變數
-做EX02-07
-
+做EX02-07  
+  
 
   
 # Day3 2017/10/27
@@ -436,7 +429,7 @@ DataFrame是Dataset的一個子集合
   
 要加一個-在中間的話要用 lit("-")  
 `flights.select( concat($"carrier", lit("-"), $"tailNum").alias("UniCarrier") ).distinct().show()`  
-
+  
 #### 做過濾
 不等於有兩個 ==  
 等於有三個 ===  
@@ -458,7 +451,7 @@ DataFrame是Dataset的一個子集合
   
 ## 改成DataFram 寫法
 將 test-02 改成 DateFrame => test-04  
-  
+   
 ## 直接寫SQL 語法
 將 test-04 改成 SQL => test-05  
   
@@ -472,38 +465,30 @@ Datasets會強制給型態轉型
 留一個Spark-Shell就好  
 進入shell with JDBC`spark-shell --driver-class-path db/postgresql-42.1.1.jar`  
   
-因為退出過shell
-`:pa Example/SQL-04.scala`  
+因為退出過shell  
+再直執行一次`:pa Example/SQL-04.scala`讀入資料
+做  
 `:pa Example/SQL-08a.scala`  
 `:pa Example/SQL-07.scala`  
 ------------------------------------------
-`cd /var/lib/pgsql/10/data`
-`vi pg_hba.conf`
+`cd /var/lib/pgsql/10/data`  
+`vi pg_hba.conf`  
 
-正確版的應該長這樣`vi /home/user/training/db/pg_hba.conf`
-
-`cp /home/user/training/db/pg_hba.conf .`
+正確版的應該長這樣`vi /home/user/training/db/pg_hba.conf`  
+  
+`cp /home/user/training/db/pg_hba.conf .`  
 ------------------------------------------
-
+  
 ## 增加資料
 用mode  
 .mode(“append”)  
   
-
 ## Overwrite
 小心使用  
 資料砍掉，整個drop  
-大公司應該是不可能下這個指令
-
-
-
-
-
-
-
-
+大公司應該是不可能下這個指令  
+  
 ## MLLib
-
 用IntelliJ開啟OPEN  
 找到那一個檔案  
 在IntelliJ的sbt-shell內`package`製作jar檔案  
@@ -517,7 +502,7 @@ Datasets會強制給型態轉型
 確認spark-2.2.0-bin-hadoop2.7的權限變成user:user  
 ### 修改log4j.properties檔案  
 變到資料夾`cd /usr/local/spark-2.2.0-bin-hadoop2.7/conf/`  
-複製一份`cp log4j.properties.template log4j.properties` 
+複製一份`cp log4j.properties.template log4j.properties`  
 修改`vi log4j.properties`  
 把`log4j.properties`內沒有被註解的一行```INFO```改成```ERROR```  
 之後出現的資訊就會減少。  

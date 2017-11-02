@@ -101,3 +101,45 @@ refresh確認lib和resource看得到資源
 用手刻加入一行資料  
   
 操作HBaseOperator.java  
+  
+Buclkload tool  上傳大量資料
+Coprocessor 客製化
+# Day3
+
+
+## 下午
+## 安裝HARE_DB
+桌面1102資料夾內解壓縮HareDBClient-1.98.06.03-CDH5.7.zip  
+進資料夾，右鍵修改starup.sh屬性成為，打勾可以當作執行檔
+點兩下，run on termal  
+
+Host改成quickstart.cloudera
+其他照抄講義
+
+
+Check HDFS Permissions
+dfs.permissions
+HDFS (Service-Wide)
+
+第一個和最後一個port改成8020
+
+#### 助教除錯
+助教改權限`HADOOP_USER_NAME=hdfs hdfs dfs -chmod 777 /`  
+
+就可以有建新增Table  
+
+
+右鍵coprocessors註冊建立，Table上面的X就會拿掉
+
+### HQL不能用的排除
+進Cloudera Manager  
+選HDFS  
+選Configuration  
+搜詢```Permissions```  
+找到```Check HDFS Permissions HDFS (Service-Wide)```後面的勾勾拿掉  
+重啟Cloudera Manager相關服務  
+HQL理論上就不會出現Exception，Query就可以動了。  
+  
+## Bulkload
+
+## JAVA
