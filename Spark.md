@@ -304,15 +304,14 @@ Ex02-03加入路徑
 
 # Day2 下午
 ## 安裝 IntelliJ
-確認有 init.sh三個檔案  
-
-`bash init.sh`  
-檢察有建立成功  
-`ll -a ~`  
-
+用user權限，移到training目錄
+`ll`確認有 init.sh三個檔案  
+執行`bash init.sh`  
+`ll -a ~`檢查有建立成功.ivy2和.sbt兩個路徑  
+  
 解壓縮intellij安裝Tar檔案到當下目錄  
 `tar zxvf TarBalls/ideaIC-2017.2.5.tar.gz`  
-補充：zcvf壓縮  
+補充：zxvf解壓縮，zcvf壓縮  
 
 啟動安裝  
 `bash idea-IC-172.4343.14/bin/idea.sh`  
@@ -504,12 +503,14 @@ Datasets會強制給型態轉型
 切換成root`su`  
 改變權限`chown -R user:user spark-2.2.0-bin-hadoop2.7`  
 確認spark-2.2.0-bin-hadoop2.7的權限變成user:user  
-### 修改log4j.properties檔案  
+#### 修改log4j.properties檔案  
 變到資料夾`cd /usr/local/spark-2.2.0-bin-hadoop2.7/conf/`  
 複製一份`cp log4j.properties.template log4j.properties`  
 修改`vi log4j.properties`  
 把`log4j.properties`內沒有被註解的一行```INFO```改成```ERROR```  
 之後出現的資訊就會減少。  
+
+# Day4
 
 <br />
 <br />
