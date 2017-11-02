@@ -1,9 +1,9 @@
 # SPARK
 
 ## 課本規劃
-課程會函蓋CH4~9<br />
-DAY1上CH2~3<br />
-DAY2上CH4~6<br />
+課程會函蓋CH4~9  
+DAY1上CH2~3  
+DAY2上CH4~6  
 
 ## 安裝CentOS
 ### VM設定
@@ -101,7 +101,7 @@ S""：會帶入後面的參數
 raw：太生了
 ```
 ### 試跑幾段Scala code
-```
+```scala
 val textFile = sc.textFile("/usr/local/spark-2.2.0-bin-hadoop2.7/README.md")
 val counts = textFile.flatMap(line => line.split(" "))
 .map(word => (word, 1))
@@ -338,7 +338,7 @@ libraryDependencies ++= Seq(
 #### 改整個HelloWorld.scala檔案變成
 用C:\Users\tcfst\Desktop\Spark\training\test-03\src\main\scala\整個蓋過去  
 改class名為HelloWorld  
-```
+```scala
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.SparkConf
