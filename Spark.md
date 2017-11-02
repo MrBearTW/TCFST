@@ -140,7 +140,6 @@ Lazy evaluation
 `sc.parallelize(Array("2#3","4#5","3#4"))`  
 `input.flatMap(x=>x.split("#"))`  
 `newRDD foreach println`  
-  
 範例2 用" "計算字數  
 `val input = sc.textFile("/usr/local/spark-2.2.0-bin-hadoop2.7/README.md")`  
 `val wordCounts = input.flatMap(line => line.split(" ")).map( x=>(x,1)).reduceByKey((a, b) => a + b)`  
@@ -207,11 +206,10 @@ Lazy evaluation
 
 ## Transformations實作
 • reduceByKey  
-``  
-``  
-``  
-``  
-``  
+聚集，透過一個方法降低資料量  
+`val input = sc.parallelize(Seq(("A",1),("B",1),("C",1),("C",1)))`  
+`val newRDD = input.reduceByKey ((x,y)=>x+y)`  
+`newRDD foreach println`    # (B,1)(A,1)(C,2)
 • groupByKey  
 依照Key合併
 `val input = sc.parallelize(Seq(("A",1),("B",2),("C",3),("C",4)))`  
@@ -222,33 +220,38 @@ Lazy evaluation
 `val newRDD = input.mapValues(x => x + 1)`  
 `newRDD foreach println`  
 • flatMapValues  
-``  
-``  
-``  
-``  
+依","拆解元素  
+`val input =sc.parallelize(Seq(("A","a,b"),("B","b,c"),("C","f,e,g"),("C","a,b")))`  
+`val newRDD = input.flatMapValues(x => x.split(","))`  
+`newRDD foreach println`    # (A,a)(A,b)(B,b)(B,c)(C,f)(C,e)(C,g)(C,a)(C,b)  
 • join  
-``  
-``  
-``  
-``  
+依Key合併
+Join  
+`val rdd1 = sc.parallelize(Seq(("A",1),("B",2),("C",3),("D",4)))`  
+`val rdd2 = sc.parallelize(Seq(("A",4),("D",3)))`  
+`val newRDD = rdd1.join(rdd2)`  
+`newRDD foreach println`    # (A,(1,4)) (D,(4,3)) 
+LeftJoin  
+`val LeftJoinRDD = rdd1.leftOuterJoin(rdd2)`  
+`LeftJoinRDD foreach println`    # (B,(2,None))(A,(1,Some(4)))(C,(3,None))(D,(4,Some(3)))
+RightJoin  
+`val RightJoinRDD = rdd1.rightOuterJoin(rdd2)`  
+`RightJoinRDD foreach println`    # (A,(Some(1),4))(D,(Some(4),3))
 ## Actions
 • countByKey  
-``  
-``  
-``  
-``  
+計算Key出現幾次
+`val input = sc.parallelize(Seq(("A",1),("B",1),("C",11),("C",12)))`  
+`val retValue = input.countByKey`  
+`retValue foreach println`    # (B,1)(A,1)(C,2)  
 • collectAsMap  
-``  
-``  
-``  
-``  
+蒐集所有key的最後一個value，並產生一個Map  
+`val input = sc.parallelize(Seq(("A",1),("B",1),("C",11),("C",12)))`  
+`val retValue = input.collectAsMap`  
+`retValue foreach println`    # (A,1)(C,12)(B,1)
 • lookup(key)  
-``  
-``  
-``  
-``  
-
-
+`val input = sc.parallelize(Seq(("A",1),("B",1),("C",11),("C",12)))`  
+`val retValue = input.lookup("C")`  
+`retValue foreach println`    # 11 12  
 
 # Day2 2017/10/19
 ### 把網路連線自動打開
@@ -270,23 +273,24 @@ join
 tuple最多到22個 
 ### Action
 實際行動  
-
-## 操做test-01.scala
+  
+### 以下所有練習都在training下進入Spark-shell
+## 計算某個情況下某字出現幾次
 在test01資料夾中  
 看這個檔案的頭五行  
 `head -n 5 t1.log`  
-計算t1.log有幾行  
+計算t1.log有幾個字  
 `wc -l t1.log`  
 在tarining資料夾內，進到sparkshell  
 執行test-01.scala  
 `:pa test-01/test-01.scala`
 
-## 匿名函數
+## Anonymous functions匿名函數
 _ 佔位符號placeholder  
 結合一個case classcode更容易(PPT30.31)  
 做Ex02-01b.scala  
 
-### 換資料夾權限
+### 若不小心用root帳號送資料進CentOS，換資料夾權限
 `chown -R user:user training/`
 user前面是username後面是usergroup  
 chmod 改  
