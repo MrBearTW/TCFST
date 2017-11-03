@@ -483,15 +483,19 @@ Datasets會強制給型態轉型
 `cp /home/user/training/db/pg_hba.conf .`  
 ------------------------------------------
   
-## 增加資料
+## 增加資料PPT Part5 P46
+資料庫不會讓你修改，另外新增下面或在其他地方  
 用mode  
 .mode(“append”)  
-  
+
 ## Overwrite
 小心使用  
 資料砍掉，整個drop  
 大公司應該是不可能下這個指令  
-  
+
+##   
+P50單筆insert
+
 ## MLLib
 用IntelliJ開啟OPEN  
 找到那一個檔案  
@@ -513,3 +517,76 @@ Datasets會強制給型態轉型
 
 <br />
 <br />
+
+# Day4
+#複習
+##
+SparkSession
+SparkC
+## SQL
+用  
+reateOrReplaceTempView  
+之後就可以下SQL指令就好了  
+## 懶人包
+spark  jupyter有打包好的版本docker
+https://github.com/jupyter/docker-stacks/tree/master/all-spark-notebook
+## 
+Datasets在DataFrame不能用的時候還可以用
+目前只支援JAVA和Scala
+SQL-06a
+SQL-06c
+## 支援哪些資歷結構
+
+## History Server Part4 P38
+`cd /usr/local`  
+`$SPARK_HOME`找到路徑  
+`ll`檢察spark-2.2.0-bin-hadoop2.72的權限  
+應該要是user:user，不應該是500:500  
+改權限成user:user`chown -R user:user spark-2.2.0-bin-hadoop2.7/`  
+`exit`退出root  
+複製一份`cp spark-defaults.conf.template spark-defaults.conf`
+改spark-defaults.conf，移除 spark.eventLog.enabled前面的 #
+
+製作一個目錄`mkdir /tmp/spark-events`  
+
+`cd $SPARK_HOME`  
+`sbin/start-history-server.sh`  
+`jps`看一下服務有沒有啟動  
+  
+有的話可以在```localhost:18080```看到HistoryServer
+
+## Spark-shell進不去
+可能原因
+因為用root進去過Spark，之後用user就不能再寫那個檔案，進Spark-shell會卡住  
+`cd training/`  
+`rm derby.log`  
+`rm -rf metastore_db`  
+
+## 效能調整 
+平行化
+
+
+# 叢集建立 Part6
+`spark-submit`  
+可以給一些參數去做執行  
+`bin/spark-submit --class org.apache.spark.examples.SparkPi --master local[**] examples/jars/spark-examples_2.11-2.2.0.jar 10`  
+  
+Deploy Mode  
+Standalone  
+  
+用SPAR on YARN  P.42  
+```
+HADOOP_CONF_DIR=/etc/hadoop/conf
+YARN_CONF_DIR=/etc/hadoop/conf  # 1.多版才需要 2.多應該是不用寫這一行  
+```
+  
+P.45  
+改資料來源變為HDFS上面  
+  
+Number of Executors P.48  
+要留一點資源給HDFS或YARN等，不能全部都給SPARK  
+  
+1.RDD-base(維護狀態，3可能就淘汰了)  
+2.DataFrame-base  
+  
+## 自修資源
