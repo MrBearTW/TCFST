@@ -10,7 +10,7 @@ input data does not conform to some implicit assumption that k-means makes and
 undesirable clusters are produced as a result. In the last plot, k-means
 returns intuitive clusters despite unevenly sized blobs.
 """
-print(__doc__)
+# print(__doc__)
 
 # Author: Phil Roth <mr.phil.roth@gmail.com>
 # License: BSD 3 clause
@@ -23,9 +23,11 @@ from sklearn.datasets import make_blobs
 
 plt.figure(figsize=(12, 12))
 
-n_samples = 1500
+n_samples = 15
 random_state = 170
 X, y = make_blobs(n_samples=n_samples, random_state=random_state)
+print(X, y)
+
 
 # Incorrect number of clusters
 y_pred = KMeans(n_clusters=2, random_state=random_state).fit_predict(X)
@@ -34,6 +36,7 @@ plt.subplot(221)
 plt.scatter(X[:, 0], X[:, 1], c=y_pred)
 plt.title("Incorrect Number of Blobs")
 
+'''
 # Anisotropicly distributed data
 transformation = [[0.60834549, -0.63667341], [-0.40887718, 0.85253229]]
 X_aniso = np.dot(X, transformation)
@@ -63,3 +66,5 @@ plt.scatter(X_filtered[:, 0], X_filtered[:, 1], c=y_pred)
 plt.title("Unevenly Sized Blobs")
 
 plt.show()
+
+'''
