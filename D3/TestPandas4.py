@@ -2,7 +2,7 @@ import pandas as pd
 from io import StringIO
 
 df = pd.read_csv('data.csv',names=['name','age'],skipinitialspace=True)
-print(df)
+#print(df)
 
 df.to_csv('data_new.csv',encoding='UTF-8')
 '''------data_new.csv長成下面那樣
