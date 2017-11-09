@@ -91,19 +91,19 @@ select * from #temp2 order by dataas
   update train_ver2_1 set ind_nomina_ult1=0 where ind_nomina_ult1=9
   update train_ver2_1 set ind_nom_pens_ult1=0 where ind_nom_pens_ult1=9
 
-  --merge column §ó¯S§O¤á ¯S§O¤á Plus¯S§O¤á
+  --merge column ï¿½ï¿½Sï¿½Oï¿½ï¿½ ï¿½Sï¿½Oï¿½ï¿½ Plusï¿½Sï¿½Oï¿½ï¿½  æ›´ç‰¹åˆ¥æˆ¶ ç‰¹åˆ¥æˆ¶ Plusç‰¹åˆ¥æˆ¶
   alter table train_ver2_1 add ind_cspec_fin_ult1 tinyint null
   update train_ver2_1 set ind_cspec_fin_ult1=1 where (ind_ctma_fin_ult1=1 or ind_ctop_fin_ult1=1 or ind_ctpp_fin_ult1=1)
  
-  --merge column µu´Á©w¦s¤á ¤¤´Á©w¦s¤á ªø´Á©w¦s¤á
+  --merge column ï¿½uï¿½ï¿½ï¿½wï¿½sï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½wï¿½sï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½wï¿½sï¿½ï¿½ çŸ­æœŸå®šå­˜æˆ¶ ä¸­æœŸå®šå­˜æˆ¶ é•·æœŸå®šå­˜æˆ¶
   alter table train_ver2_1 add ind_dspec_fin_ult1 tinyint null
   update train_ver2_1 set ind_dspec_fin_ult1=1 where (ind_deco_fin_ult1=1 or ind_deme_fin_ult1=1 or ind_dela_fin_ult1=1)
  
-  --merge column ©è©ã¶U´Ú ¶U´Ú
+  --merge column ï¿½ï¿½ï¿½Uï¿½ï¿½ ï¿½Uï¿½ï¿½ æŠµæŠ¼è²¸æ¬¾ è²¸æ¬¾
   alter table train_ver2_1 add ind_pspec_fin_ult1 tinyint null
   update train_ver2_1 set ind_pspec_fin_ult1=1 where (ind_hip_fin_ult1=1 or ind_pres_fin_ult1=1 )
  
-  --merge column °h¥ðª÷ °h¥ðª÷2
+  --merge column ï¿½hï¿½ï¿½ï¿½ ï¿½hï¿½ï¿½ï¿½2 é€€ä¼‘é‡‘ é€€ä¼‘é‡‘2
   alter table train_ver2_1 add ind_nspec_fin_ult1 tinyint null
   update train_ver2_1 set ind_nspec_fin_ult1=1 where (ind_plan_fin_ult1=1 or ind_nom_pens_ult1=1 )
  
@@ -144,6 +144,7 @@ into #temp1
 from santander.dbo.train_ver2
 where fecha_dato='2016-05-28' and age>=18 and age <=80 and sexo<>'X'and age<>999 and antiguedad<>999 and ind_actividad_cliente<>9 and renta<>99999999.99
 
+--åˆªæŽ‰å…¨ç‚ºé›¶?
 select ncodpers into #temp2
 from #temp1
 where (ind_ahor_fin_ult1=0 and ind_aval_fin_ult1=0 and ind_cco_fin_ult1=0 and 
