@@ -162,18 +162,20 @@ HQL理論上就不會出現Exception，Query就可以動了。
 {(rowkey,cf-qulifer,timestamp),Value}
 
 ## KeyDesign
-Slating  
-Hashing  
-Reverse key  
-Montonically Increasing單調遞增  
+Slating 加儲存的Region Server  
+Hashing 隨機加  
+Reverse key 前面加特定字母表示國家  
+Montonically Increasing 單調遞增  
 
-##
+#不同Key Design對讀寫影響
 |Keys|Sequential|Salted||Promoted Field|Random|
 |:---:|--|--|--|--|--|
-||*|||||
-|||*||||
+|Performance Good|*||||#|
+|||*||#||
+||||# *|||
+|||#||*||
+|Performance Poor|#||||*|
 |||||||
-|||||*||
-||||||*|
-|||||||
+\* Write  
+\# Sequential Reads  
 
