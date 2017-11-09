@@ -161,9 +161,13 @@ HQL理論上就不會出現Exception，Query就可以動了。
 通常：一個Key-Value最大不超過10MB  
 {(rowkey,cf-qulifer,timestamp),Value}
 
+## Schema Design
+*tall-narrow(通常推薦這個)  
+*flat-wide  
+
 ## KeyDesign
 Slating 加儲存的Region Server  
-Hashing 隨機加  
+Hashing 隨機加 例如某個主機號碼  
 Reverse key 前面加特定字母表示國家  
 Montonically Increasing 單調遞增  
 
@@ -178,4 +182,10 @@ Montonically Increasing 單調遞增
 |||||||
 \* Write  
 \# Sequential Reads  
+
+## 一些滿足ACID需求的工具
+ACID，是指資料庫管理系統（DBMS）在寫入或更新資料的過程中，為保證事務（transaction）是正確可靠的，所必須具備的四個特性：原子性（atomicity，或稱不可分割性）、一致性（consistency）、隔離性（isolation，又稱獨立性）、持久性（durability）。  
+
+*Apache Transaction
+*Apache Tephra
 
