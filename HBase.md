@@ -143,3 +143,37 @@ HQL理論上就不會出現Exception，Query就可以動了。
 ## Bulkload
 
 ## JAVA
+  
+# 2017/11/09
+|RawKey|ID|CF1||CF2|||
+|:---:|--|--|--|--|--|--|
+|||CF1-Q1|CF1-Q2|CF2-Q1|CF2-Q2|CF2-Q3|
+|100000|5566|KH|TW|2000/1/19|29|IT|
+|100001|9487|NY|US|2017/11/9||FI|
+|100002|1111||UK|1999/9/28|18|UE|
+
+# 經驗談
+1EB=1024PB  
+1PB=1044TB  
+一個Region Server會有很多個Region  
+一個CF會對應到一個Region  
+通常：會控制一個Region Server在100個Region以下  
+通常：一個Key-Value最大不超過10MB  
+{(rowkey,cf-qulifer,timestamp),Value}
+
+## KeyDesign
+Slating  
+Hashing  
+Reverse key  
+Montonically Increasing單調遞增  
+
+##
+|Keys|Sequential|Salted||Promoted Field|Random|
+|:---:|--|--|--|--|--|
+||*|||||
+|||*||||
+|||||||
+|||||*||
+||||||*|
+|||||||
+

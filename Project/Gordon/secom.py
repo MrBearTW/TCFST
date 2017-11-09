@@ -73,7 +73,7 @@ dt = cluster.KMeans(n_clusters=2).fit(X)
 #印出分群結果
 cluster_labels = dt.labels_
 print("分群結果")
-print(cluster_labels )
+print(cluster_labels)
 print("----------")
 
 #印出原答案
