@@ -16,9 +16,10 @@ with open('test1000.csv',encoding='Big5')as f:
 clf =  cluster.KMeans(init='k-means++', n_clusters=10, random_state=42)
 iris_clf = clf.fit(l1)
 
+
 # 預測
 test_y_predicted = iris_clf.predict(l1)
-print(test_y_predicted)
+#print(test_y_predicted)
 
 '''
     for row in list(reader)[1:]:
