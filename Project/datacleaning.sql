@@ -159,12 +159,3 @@ SELECT *
 FROM [master].[dbo].[ver0528]
 where ["canal_entrada"] in ('004','007','013','025')
 
-
--- 2017/11/10  從去完逗號 加完9 去完空格開始
-
-算各年齡層
-
-SELECT age ,count(*)
-FROM bank.train_ver2
-group by age
-
