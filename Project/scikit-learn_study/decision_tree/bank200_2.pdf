@@ -1,0 +1,29 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label=<renta_log &le; 1.5<br/>gini = 0.365<br/>samples = 200<br/>value = [152, 48]<br/>class = Dont Have>, fillcolor="#e58139ae"] ;
+1 [label=<antiguedad &le; 1.5<br/>gini = 0.272<br/>samples = 37<br/>value = [31, 6]<br/>class = Dont Have>, fillcolor="#e58139ce"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label=<gini = 0.5<br/>samples = 4<br/>value = [2, 2]<br/>class = Dont Have>, fillcolor="#e5813900"] ;
+1 -> 2 ;
+3 [label=<age &le; 1.5<br/>gini = 0.213<br/>samples = 33<br/>value = [29, 4]<br/>class = Dont Have>, fillcolor="#e58139dc"] ;
+1 -> 3 ;
+4 [label=<gini = 0.5<br/>samples = 2<br/>value = [1, 1]<br/>class = Dont Have>, fillcolor="#e5813900"] ;
+3 -> 4 ;
+5 [label=<gini = 0.175<br/>samples = 31<br/>value = [28, 3]<br/>class = Dont Have>, fillcolor="#e58139e4"] ;
+3 -> 5 ;
+6 [label=<antiguedad &le; 1.5<br/>gini = 0.383<br/>samples = 163<br/>value = [121, 42]<br/>class = Dont Have>, fillcolor="#e58139a6"] ;
+0 -> 6 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+7 [label=<renta_log &le; 2.5<br/>gini = 0.165<br/>samples = 11<br/>value = [10, 1]<br/>class = Dont Have>, fillcolor="#e58139e6"] ;
+6 -> 7 ;
+8 [label=<gini = 0.198<br/>samples = 9<br/>value = [8, 1]<br/>class = Dont Have>, fillcolor="#e58139df"] ;
+7 -> 8 ;
+9 [label=<gini = 0.0<br/>samples = 2<br/>value = [2, 0]<br/>class = Dont Have>, fillcolor="#e58139ff"] ;
+7 -> 9 ;
+10 [label=<age &le; 1.5<br/>gini = 0.394<br/>samples = 152<br/>value = [111, 41]<br/>class = Dont Have>, fillcolor="#e58139a1"] ;
+6 -> 10 ;
+11 [label=<gini = 0.305<br/>samples = 16<br/>value = [13, 3]<br/>class = Dont Have>, fillcolor="#e58139c4"] ;
+10 -> 11 ;
+12 [label=<gini = 0.403<br/>samples = 136<br/>value = [98, 38]<br/>class = Dont Have>, fillcolor="#e581399c"] ;
+10 -> 12 ;
+}
