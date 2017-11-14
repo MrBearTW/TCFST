@@ -1,0 +1,29 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label=<renta_log &le; 2.5<br/>gini = 0.666<br/>samples = 200<br/>value = [64, 65, 71]<br/>class = G3>, fillcolor="#8139e50b"] ;
+1 [label=<renta_log &le; 1.5<br/>gini = 0.657<br/>samples = 156<br/>value = [43, 49, 64]<br/>class = G3>, fillcolor="#8139e524"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label=<antiguedad &le; 1.5<br/>gini = 0.583<br/>samples = 37<br/>value = [7, 9, 21]<br/>class = G3>, fillcolor="#8139e56d"] ;
+1 -> 2 ;
+3 [label=<gini = 0.5<br/>samples = 4<br/>value = [2, 0, 2]<br/>class = G1>, fillcolor="#e5813900"] ;
+2 -> 3 ;
+4 [label=<gini = 0.571<br/>samples = 33<br/>value = [5, 9, 19]<br/>class = G3>, fillcolor="#8139e56a"] ;
+2 -> 4 ;
+5 [label=<age &le; 1.5<br/>gini = 0.665<br/>samples = 119<br/>value = [36, 40, 43]<br/>class = G3>, fillcolor="#8139e50a"] ;
+1 -> 5 ;
+6 [label=<gini = 0.623<br/>samples = 18<br/>value = [8, 3, 7]<br/>class = G1>, fillcolor="#e5813917"] ;
+5 -> 6 ;
+7 [label=<gini = 0.662<br/>samples = 101<br/>value = [28, 37, 36]<br/>class = G2>, fillcolor="#39e58104"] ;
+5 -> 7 ;
+8 [label=<age &le; 2.5<br/>gini = 0.615<br/>samples = 44<br/>value = [21, 16, 7]<br/>class = G1>, fillcolor="#e581392e"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label=<antiguedad &le; 2.5<br/>gini = 0.592<br/>samples = 39<br/>value = [20, 14, 5]<br/>class = G1>, fillcolor="#e581393d"] ;
+8 -> 9 ;
+10 [label=<gini = 0.611<br/>samples = 12<br/>value = [4, 6, 2]<br/>class = G2>, fillcolor="#39e58140"] ;
+9 -> 10 ;
+11 [label=<gini = 0.549<br/>samples = 27<br/>value = [16, 8, 3]<br/>class = G1>, fillcolor="#e581396b"] ;
+9 -> 11 ;
+12 [label=<gini = 0.64<br/>samples = 5<br/>value = [1, 2, 2]<br/>class = G2>, fillcolor="#39e58100"] ;
+8 -> 12 ;
+}
