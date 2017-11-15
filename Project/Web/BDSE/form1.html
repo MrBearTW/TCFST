@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+	<head>
+
+		<meta charset="utf-8" />
+        <title>首頁</title>
+
+		<style>
+        /*CSS寫在這裡*/
+       @import url('styles/main.css');
+       fieldset {
+			width:500px;
+			margin:15px;
+			border:1px solid #acd6ff;
+			border-radius:15px;
+		}
+		em {
+			color:red;
+		}
+		.st1 {
+			width:450px;
+			border-bottom:1px solid #e0e0e0;
+			padding-bottom:10px;
+			margin:20px;
+		}
+		.sub {
+			width:450px;
+			margin:20px;
+			text-align:center;
+		}
+		.t1 {
+			width:100px;
+			float:left;
+			text-align:right;
+			padding-right:3px;
+		}
+		textarea {
+			resize:none;
+		}
+		</style>
+		
+	</head>
+     <body>
+     	<div id="allpage">
+     	<header> 		 		 			
+ 		 <nav>
+       		<ul id="menu">
+       	   		<li><a href="index.html">回首頁</a></li>
+       	   		<li><a href="form1.html">解決方案</a></li>
+       	   		<li><a href="">實績介紹</a></li>
+       	   		<li><a href="">合作夥伴</a></li>
+       	   		<li><a href="">主要客戶</a></li>
+       	   		<li><a href="">公司簡介</a></li>
+       	   		<li><a href="">聯絡我們</a></li>
+       		</ul>
+       		
+       	</nav>
+       	<img src="images/logo.jpg" title="logo" width="1024">
+       </header>
+       <div id="content">
+       		
+       		<article>
+       			<h2 class="title">表單練習</h2>
+       			<form action="#" method="get" enctype="multipart/form-data">
+			<fieldset>
+				<legend>個人資料一<em>(必填)</em></legend>
+				<div class="st1">
+					<label for="account1" class="t1">姓名:</label><input type="text" name="account" id="account1" size="10" maxlength="5" autofocus autocomplete="off" placeholder="guest">
+				</div>
+				<div class="st1">
+					<label class="t1">性別:</label>
+					<input type="radio" name="gender" value="male" id="male1"><label for="male1">男</label>
+					<input type="radio" name="gender" value="female" id="female1"><label for="female1">女</label>
+				</div>
+				<div class="st1">
+					<label class="t1">身分證字號:</label><input type="text" name="id1" size="10" pattern="[a-zA-Z]{1}[1-2]{1}\d{8}">
+				</div>
+				<div class="st1">
+					<label class="t1">E-mail:</label><input type="email" name="mail1">
+				</div>
+				<div class="st1">
+					<label class="t1">URL:</label><input type="url" name="url1">
+				</div>
+				<div class="st1">
+					<label for="pwd1" class="t1">密碼:</label><input type="password" name="pwd" id="pwd1" required maxlength="6">
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>地址</legend>
+				<div class="st1">
+					<label class="t1">縣市:</label>
+					<select name="add1" multiple>
+						<option value="Tpe">台北市</option>
+						<option value="Tph" selected>新北市</option>
+						<option value="Tyu">桃園市</option>
+					</select>
+				</div>
+				<div class="st1">
+					<label class="t1">完整地址:</label>
+					<input type="text" name="add2" size="30">
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>個人資料二</legend>
+				<div class="st1">
+					<label class="t1">興趣:</label>
+					<input type="checkbox" name="hobby" value="reading" id="reading1"><label for="reading1">閱讀</label>
+					<input type="checkbox" name="hobby" value="music" id="music1"><label for="music1">音樂</label>
+					<input type="checkbox" name="hobby" value="sport" id="sport1"><label for="sport1">運動</label>
+					<input type="checkbox" name="hobby" value="movie" id="movie1"><label for="movie1">電影</label>
+				</div>
+				<div class="st1">
+					<label class="t1">照片:</label><input type="file" name="file1" multiple>
+				</div>
+				<div class="st1">
+					<label class="t1">Blog:</label>
+					<input type="url" name="url1" list="hplist">
+					<datalist id="hplist">
+						<option value="http://www.pchome.com.tw">
+						<option value="http://www.faccebook.com">
+						<option value="http://www.google.com">
+					</datalist>
+				</div>
+				<div class="st1">
+					<label for="memo" class="t1">意見:</label><textarea id="memo" cols="40" rows="5"></textarea>
+				</div>
+			</fieldset>
+			
+			<div class="sub">
+				<input type="submit" value="送出">
+				<input type="reset" value="清除">
+			</div>
+			
+		</form>
+       		</article>
+       		<aside>
+       			<h2 class="title">最新消息</h2>
+       			<dl>
+       				<dt>2010年12月</dt>
+       				<dd>範例股份有限公司網頁全新改版</dd>
+       			</dl>
+       			<dl>
+       				<dt>2010年12月</dt>
+       				<dd>範例股份有限公司網頁全新改版</dd>
+       			</dl>
+       			<dl>
+       				<dt>2010年12月</dt>
+       				<dd>範例股份有限公司網頁全新改版</dd>
+       			</dl>
+       			<dl>
+       				<dt>2010年12月</dt>
+       				<dd>範例股份有限公司網頁全新改版</dd>
+       			</dl>
+       			<dl>
+       				<dt>2010年12月</dt>
+       				<dd>範例股份有限公司網頁全新改版</dd>
+       			</dl>
+       		</aside>
+       		
+       </div><!--end content-->
+       		<footer>
+       			<p>E-amil:aaa@gmail.com &nbsp; Tel:(02)2222-2222 &nbsp; 台北市復興南路一段390號 &nbsp; &copy; 2014 All Rights Reserved Quality Art Technology CO. </p>
+       		</footer>
+       </div><!--end allpage-->
+	</body>
+</html>
