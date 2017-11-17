@@ -94,7 +94,7 @@ def unauthorized_callback():
     return redirect('/login')
 
         
-@app.route('/')
+@app.route('/')    # app.route('/')
 @flask_login.login_required
 def root():
     return render_template('index.html')
@@ -114,4 +114,5 @@ def demo_list():
                            )
     
 if __name__ == '__main__':
-    app.run(debug=True, port=8000)
+#    app.run(debug=True, port=8000)
+    app.run('0.0.0.0', port=8000)
