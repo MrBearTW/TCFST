@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Webpage</title>
+</head>
+
+<body>
+    <title>Hello from Flask</title>
+    <a href="/">回到上一頁</a>
+    <br/> {% if name %}
+    <h1>Hello {{ name }}!</h1>
+    {% else %}
+    <h1>Hello Thoughts!</h1>
+    {% endif %}
+    <form method="POST" action="/recommend">
+        <p>推薦測試-輸入單篇文章</p>
+        <textarea textarea rows="10" cols="90" name="context"></textarea><br>
+        <button type="submit">送出</button>
+        <button type="reset">清空</button>
+    </form>
+    <p>{% if keywords %} keywords: {% for item in keywords %} {{ item }} | {% endfor %} {% endif %}</p>
+    <p>
+        {% if uniIDs|length > 0 %} {% for i in range(0, uniIDs|length) %}
+        <a href="{{ urls[uniIDs[i]] }}" target="_blank">{{ titles[uniIDs[i]] }}</a>
+        <hr> {% endfor %} {% endif %}
+    </p>
+</body>
+
+</html>

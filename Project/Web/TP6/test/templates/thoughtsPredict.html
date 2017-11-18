@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Webpage</title>
+</head>
+
+<body>
+    <title>Hello from Flask</title>
+    <a href="/">回到上一頁</a><br/>
+    <h1>Hello Thoughts!</h1>
+    <form method="POST" action="/predictType">
+        <p>類型預測-輸入單篇文章</p>
+        <textarea textarea rows="10" cols="90" name="context"></textarea><br>
+        <button type="submit">送出</button>
+        <button type="reset">清空</button>
+    </form>
+    <p>{% if type1 %} 類型: {{ type1 }} {% endif %}</p>
+
+</body>
+
+</html>
