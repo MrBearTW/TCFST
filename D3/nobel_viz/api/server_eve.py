@@ -9,8 +9,8 @@ if 'PORT' in os.environ:
     host = '0.0.0.0'
 else:
     port = 5000
+    #host = '0.0.0.0' 
     host = '127.0.0.1'
-
 app = Eve()
 
 if __name__=='__main__':
