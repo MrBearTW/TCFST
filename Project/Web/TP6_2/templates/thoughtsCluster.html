@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Webpage</title>
+</head>
+
+<body>
+    <title>Hello from Flask</title>
+    <a href="/">回到上一頁</a><br/>
+    <h1>Hello Thoughts!</h1>
+    <form method="POST" action="/cluster">
+        <p>新文聚類-輸入查詢字</p>
+        <input type="text" name="words"><br>
+        <button type="submit">送出</button>
+        <button type="reset">清空</button>
+    </form>
+    {% if IDList %} {% for group in IDList %}
+    <br>====================================<br> {% for id in group %}
+    <a href="{{urlDict[id]}}">{{ titleDict[id] }}</a>
+    <hr> {% endfor %} {% endfor %} {% endif %}
+</body>
+
+</html>
