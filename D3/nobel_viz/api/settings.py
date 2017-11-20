@@ -6,10 +6,13 @@ import os
 
 # We want to seamlessy run our API both locally and on Heroku. If running on
 # Heroku, sensible DB connection settings are stored in environment variable MONGODB_URI
-MONGO_URI = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/nobel_prize')
+
+#MONGO_URI = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/nobel_prize')
+MONGO_URI = os.environ.get('MONGODB_URI', 'mongodb://192.168.10.230:27017/nobel_prize')
+
 #MONGO_DBNAME = 'nobel_prize'
 X_DOMAINS = '*'
-HATEOAS = False    #超媒體即應用狀態引擎
+HATEOAS = False
 PAGINATION = False
 
 URL_PREFIX = 'api'
