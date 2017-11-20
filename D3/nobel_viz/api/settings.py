@@ -9,7 +9,7 @@ import os
 MONGO_URI = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/nobel_prize')
 #MONGO_DBNAME = 'nobel_prize'
 X_DOMAINS = '*'
-HATEOAS = False
+HATEOAS = False    #超媒體即應用狀態引擎
 PAGINATION = False
 
 URL_PREFIX = 'api'
