@@ -24,10 +24,12 @@ def cc():
     age = request.form['age']
     income = request.form['income']
     seniority = request.form['seniority']
+    #print(age)
     X = np.array ([age,income,seniority])
-
+    print(X)
     clf3 = joblib.load('save/clf2.pkl')
     EEE = clf3.predict([X])
+    #print(EEE)
     return render_template('ccend.html', EEE = EEE)
 
 if __name__ == '__main__':

@@ -29,7 +29,7 @@ dfkl = dfK.labels_
 #print(dfK.cluster_centers_)
 '''
 
-cc = pd.read_csv('cluster_1110_2_20171113_addC_1000.csv',index_col=0)
+cc = pd.read_csv('cluster_1110_2_20171113_addC.csv',index_col=0)
 X1 = cc.iloc[:,1:2] #+ cc.iloc[:,3:5]
 X2 = cc.iloc[:,3:5]
 #X =X1 +X2
@@ -37,6 +37,18 @@ X = pd.concat([X1, X2], axis=1)
 #print(type(X))
 #print(X)
 #X = np.array(X)
-ccK = KMeans(n_clusters=3, random_state=0).fit(X)
-cckl = ccK.labels_
-print(cckl)
+
+#ccK = KMeans(n_clusters=3, random_state=0).fit(X)
+#cckl = ccK.labels_
+
+#print(cckl)
+
+K = np.array([30, 20000000000, 20000000000])
+from sklearn.externals import joblib #jbolib模块
+
+#joblib.dump(ccK, 'save/cck.pkl')
+
+ccK2 = joblib.load('save/cck.pkl')
+A=ccK2.predict([K])
+#print(clf3.predict([X]))
+print(A)
