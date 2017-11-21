@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>pie-chart test | amCharts</title>
+		<meta name="description" content="chart created using amCharts live editor" />
+		
+		<!-- amCharts javascript sources -->
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script type="text/javascript" src="https:http://cdn.amcharts.com/lib/3/pie.js"></script>
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+		
+
+		<!-- amCharts javascript code -->
+		<script type="text/javascript">
+			AmCharts.makeChart("chartdiv",
+				{
+					"type": "pie",
+					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+					"titleField": "country",
+					"valueField": "litres",
+					"fontSize": 12,
+					"theme": "light",
+					"allLabels": [],
+					"balloon": {},
+					"titles": [],
+					"dataProvider": [
+						{
+							"country": "Czech Republic",
+							"litres": ""
+						},
+						{
+							"country": "",
+							"litres": "8618"
+						},
+						{
+							"country": "Funds",
+							"litres": "23904"
+						},
+						{
+							"country": "Taxes",
+							"litres": "19610"
+						},
+						{
+							"country": "Credit_Card",
+							"litres": "13004"
+						},
+						{
+							"country": "Securities",
+							"litres": "80832"
+						},
+						{
+							"country": "particular",
+							"litres": "13402"
+						},
+						{
+							"country": "Saving",
+							"litres": "75224"
+						}
+					]
+				}
+			);
+		</script>
+	</head>
+	<body>
+		<div id="chartdiv" style="width: 100%; height: 400px; background-color: #FFFFFF;" ></div>
+	</body>
+</html>

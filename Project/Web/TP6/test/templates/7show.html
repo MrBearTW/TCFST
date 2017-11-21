@@ -15,7 +15,7 @@ svg {
 
 </style>
 <body>
-<script src="d3.v3.min.js"></script>  <!-- http://d3js.org/d3.v3.min.js -->
+<script src="static/js/min.js"></script>  <!-- http://d3js.org/d3.v3.min.js -->
 
 
 <script>
@@ -58,7 +58,7 @@ var area = d3.svg.area()
     .x(function(d) { return x(d.date); })
     .y1(function(d) { return y(d.price); });
 
-d3.csv("stocks.csv", function(data) {
+d3.csv("static/data/stocks.csv", function(data) {
   var parse = d3.time.format("%b %Y").parse;
 
   // Nest stock values by symbol.
