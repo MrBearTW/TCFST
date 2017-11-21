@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-
+'''
 X = np.array([[1, 2], [1, 4], [1, 0],[4, 2], [4, 4], [4, 0]])
 kmeans = KMeans(n_clusters=2, random_state=0).fit(X)
 kmeans.labels_
@@ -20,6 +20,8 @@ kmeans.predict([[0, 0], [4, 4]])
 
 kmeans.cluster_centers_
 #print(kmeans.cluster_centers_)
+'''
+
 
 '''
 df = pd.read_csv('300.csv')
@@ -36,9 +38,9 @@ X2 = cc.iloc[:,3:5]
 X = pd.concat([X1, X2], axis=1)
 #print(type(X))
 #print(X)
-#X = np.array(X)
+X = np.array(X)
 
-#ccK = KMeans(n_clusters=3, random_state=0).fit(X)
+ccK = KMeans(n_clusters=3, random_state=0).fit(X)
 #cckl = ccK.labels_
 
 #print(cckl)
@@ -46,7 +48,7 @@ X = pd.concat([X1, X2], axis=1)
 K = np.array([30, 20000000000, 20000000000])
 from sklearn.externals import joblib #jbolib模块
 
-#joblib.dump(ccK, 'save/cck.pkl')
+joblib.dump(ccK, 'save/cck.pkl')
 
 ccK2 = joblib.load('save/cck.pkl')
 A=ccK2.predict([K])
