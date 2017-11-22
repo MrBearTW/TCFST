@@ -44,22 +44,32 @@ def show7():
 def class1():
     return render_template('class1.html')
 
-
-
-@app.route('/class1_age')
-def class1_age():
+@app.route('/class1age', methods=['POST'])
+def class1age():
     age = request.form['age']
-    income = request.form['income']
-    seniority = request.form['seniority']
-    #print(age)
-    #X = np.array ([age,income,seniority])
-    X = age
-    print(X)
-    class1_age = joblib.load('save/class1_age.pkl')
-    EEE = class1_age.predict([X])
+    # income = request.form['income']
+    # seniority = request.form['seniority']
+    # print(age)
+    # #X = np.array ([age,income,seniority])
+    # X = np.array ([age])
+    # print(X)
+    # class1_age = joblib.load('save/class1_age.pkl')
+    # EEE = class1_age.predict([X])
+    # print(EEE)
+    # #return render_template('clusterresult.html', EEE = EEE)
+    X = np.array ([age])
+    #print(X)
+    class1age = joblib.load('save/class1_age.pkl')
+    EEE = class1age.predict([X])
     #print(EEE)
-    #return render_template('clusterresult.html', EEE = EEE)
-    return render_template('class1result.html', EEE = EEE)
+    if EEE == 1 :
+        class1 = '分在新進客戶群，推薦服務為 1. Taxes 2. Particular Account 3.Credit Card'
+    elif EEE == 2 :
+        class1 = '分在潛力客戶群，推薦服務為 1. Particular Account 2. Savings 3.Taxes'
+    else :
+        class1 = '分在忠誠客戶群，推薦服務為 1. Particular Account 2. Loans 3. Taxes'
+
+    return render_template('class1result.html', EEE = class1)
 
 @app.route('/class2')
 def class2():
