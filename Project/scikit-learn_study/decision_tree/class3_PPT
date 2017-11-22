@@ -1,0 +1,29 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label=<Seniority &le; 3.5<br/>entropy = 1.498<br/>samples = 512931<br/>value = [251276, 107241, 154414]<br/>class = New>, fillcolor="#e5813945"] ;
+1 [label=<Age &le; 2.5<br/>entropy = 0.871<br/>samples = 352012<br/>value = [249203, 102809, 0]<br/>class = New>, fillcolor="#e5813996"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label=<entropy = 0.0<br/>samples = 197830<br/>value = [197830, 0, 0]<br/>class = New>, fillcolor="#e58139ff"] ;
+1 -> 2 ;
+3 [label=<Age &le; 3.5<br/>entropy = 0.918<br/>samples = 154182<br/>value = [51373, 102809, 0]<br/>class = Promising>, fillcolor="#39e58180"] ;
+1 -> 3 ;
+4 [label=<entropy = 0.979<br/>samples = 87810<br/>value = [51373, 36437, 0]<br/>class = New>, fillcolor="#e581394a"] ;
+3 -> 4 ;
+5 [label=<entropy = 0.0<br/>samples = 66372<br/>value = [0, 66372, 0]<br/>class = Promising>, fillcolor="#39e581ff"] ;
+3 -> 5 ;
+6 [label=<Age &le; 2.5<br/>entropy = 0.281<br/>samples = 160919<br/>value = [2073, 4432, 154414]<br/>class = Loyal>, fillcolor="#8139e5f4"] ;
+0 -> 6 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+7 [label=<Age &le; 1.5<br/>entropy = 0.987<br/>samples = 3297<br/>value = [1869, 0, 1428]<br/>class = New>, fillcolor="#e581393c"] ;
+6 -> 7 ;
+8 [label=<entropy = 0.71<br/>samples = 1412<br/>value = [1138, 0, 274]<br/>class = New>, fillcolor="#e58139c2"] ;
+7 -> 8 ;
+9 [label=<entropy = 0.963<br/>samples = 1885<br/>value = [731, 0, 1154]<br/>class = Loyal>, fillcolor="#8139e55d"] ;
+7 -> 9 ;
+10 [label=<Seniority &le; 4.5<br/>entropy = 0.199<br/>samples = 157622<br/>value = [204, 4432, 152986]<br/>class = Loyal>, fillcolor="#8139e5f7"] ;
+6 -> 10 ;
+11 [label=<entropy = 0.286<br/>samples = 98329<br/>value = [204, 4432, 93693]<br/>class = Loyal>, fillcolor="#8139e5f2"] ;
+10 -> 11 ;
+12 [label=<entropy = 0.0<br/>samples = 59293<br/>value = [0, 0, 59293]<br/>class = Loyal>, fillcolor="#8139e5ff"] ;
+10 -> 12 ;
+}
