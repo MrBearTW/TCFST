@@ -1,4 +1,4 @@
-2017/12/22
+2017/12/22 TCFST
 
 PostgreSQL台灣使用者社群官方網站 https://postgresql.tw/  
   
@@ -43,6 +43,10 @@ select "pubDate", title, link from radicalerss limit 10;
 ```
 
 
+
+## 基礎操作
+照著網頁一路做
+https://docs.postgresql.tw/tw.10/the-sql-language/23-creating-a-new-table.html
 
 # DOCKER
 
