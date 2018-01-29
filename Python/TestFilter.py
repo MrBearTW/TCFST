@@ -13,7 +13,7 @@ def lt5(elem):
 def eq6(elem):
     return len(elem)==6
 
-names =['Taron Egerton','Colin Firth','John','Mark Strong','5566N01','948717']
+names =['Mary','Taron Egerton','Colin Firth','John','Mark Strong','5566N01','948717']
 
 print('大於6',filter(gt6,names))
 print('小於5',filter(lt5,names))

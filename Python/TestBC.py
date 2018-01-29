@@ -6,7 +6,7 @@ for i in range(0,10,1):
 
 score = int(input('請輸入成績：'))
 if score >= 60:
-    print('After if')
+    print('執行if後面這一行')
 else:
     pass
-print('After Pass')
+print('執行Pass後面這一行')

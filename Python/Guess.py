@@ -1,5 +1,5 @@
 import random
-Number = random.randint(1,10)
+Number = random.randint(1,42)
 UserNum = 0
 n = int(1)
 
