@@ -8,6 +8,7 @@ with open('OTC.txt')as f:
     infoArray= decodejson["infoArray"]
     print(decodejson["infoArray"][0]["l"])  #140.53
     print(decodejson["infoArray"][0]["h"])  #142.06
+    
 
 
 #    'infoArray': [{'ex': 'otc', 'd': '20171002', 'it': 't', 'c': 'o00', 'n': '櫃買指數', 'o': '140.53', 'l': '140.53', 'tk0':
