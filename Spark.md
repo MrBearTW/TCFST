@@ -515,11 +515,6 @@ P50單筆insert
 之後出現的資訊就會減少。  
 
 # Day4
-
-<br />
-<br />
-
-# Day4
 #複習
 ##
 SparkSession
