@@ -58,7 +58,7 @@ nbformat==4.0.1
 ndg-httpsclient==0.4.0
 normality==0.2.4
 notebook==4.0.6
-numpy==1.10.4
+numpy==1.22.0
 oauth2client==1.5.2
 oauthlib==1.0.3
 pandas==0.17.1
